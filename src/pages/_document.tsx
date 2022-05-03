@@ -18,13 +18,10 @@ class MyDocument extends Document {
             sheet.collectStyles(<App {...props} />),
         });
       const initialProps = { ...(await Document.getInitialProps(ctx)) };
+      initialProps.styles = initialProps.styles || sheet.getStyleElement();
 
       return {
         ...initialProps,
-        // styles: {
-        //   ...initialProps.styles,
-        //   ...sheet.getStyleElement(),
-        // },
       };
     } finally {
       sheet.seal();
