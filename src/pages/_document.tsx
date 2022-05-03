@@ -1,9 +1,9 @@
 import Document, {
-	DocumentContext,
-	Head,
-	Html,
-	Main,
-	NextScript,
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -22,6 +22,12 @@ class MyDocument extends Document {
 
       return {
         ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
       };
     } finally {
       sheet.seal();

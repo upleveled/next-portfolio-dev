@@ -3,11 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3040",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev -p 3040",
+    "gen": "graphql-codegen --config codegen.yml",
+    "postinstall": "patch-package",
     "lint": "next lint",
-    "gen": "graphql-codegen --config codegen.yml"
+    "start": "next start"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "prettier --write"
+    ]
+  },
+  "resolutions": {
+    "@types/react": "18.0.8",
+    "@typescript-eslint/eslint-plugin": "5.22.0",
+    "@typescript-eslint/parser": "5.22.0",
+    "@typescript-eslint/utils": "5.22.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "26.1.5",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.5.0",
+    "eslint-plugin-testing-library": "5.3.1"
   },
   "dependencies": {
     "@graphql-codegen/cli": "2.6.2",
@@ -17,6 +34,8 @@
     "formik": "^2.2.9",
     "next": "12.1.5",
     "next-seo": "5.4.0",
+    "patch-package": "6.4.7",
+    "postinstall-postinstall": "2.1.0",
     "react": "^18.1.0",
     "react-dom": "^16.8",
     "react-google-recaptcha": "2.1.0",
@@ -56,21 +75,5 @@
     "eslint-plugin-unicorn": "42.0.0",
     "lint-staged": "12.4.1",
     "typescript": "4.6.4"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "prettier --write"
-    ]
-  },
-  "resolutions": {
-    "eslint-plugin-react": "7.29.4",
-    "eslint-plugin-testing-library": "5.3.1",
-    "@typescript-eslint/eslint-plugin": "5.22.0",
-    "@typescript-eslint/parser": "5.22.0",
-    "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jest": "26.1.5",
-    "@types/react": "18.0.8",
-    "eslint-plugin-react-hooks": "4.5.0",
-    "@typescript-eslint/utils": "5.22.0"
   }
 }
