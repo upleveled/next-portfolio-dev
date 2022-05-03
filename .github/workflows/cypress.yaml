@@ -14,5 +14,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          build: yarn build
+          build: yarn build && yarn patch-package
           start: yarn start
