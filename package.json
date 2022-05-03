@@ -6,7 +6,6 @@
     "build": "next build",
     "dev": "next dev -p 3040",
     "gen": "graphql-codegen --config codegen.yml",
-    "postinstall": "patch-package",
     "lint": "next lint",
     "start": "next start"
   },
@@ -35,7 +34,6 @@
     "next": "12.1.5",
     "next-seo": "5.4.0",
     "patch-package": "6.4.7",
-    "postinstall-postinstall": "2.1.0",
     "react": "^18.1.0",
     "react-dom": "^16.8",
     "react-google-recaptcha": "2.1.0",
