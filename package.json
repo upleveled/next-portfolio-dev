@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "yarn patch-package && next build",
     "dev": "next dev -p 3040",
     "gen": "graphql-codegen --config codegen.yml",
     "lint": "next lint",
