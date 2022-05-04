@@ -1,9 +1,9 @@
 import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
+	DocumentContext,
+	Head,
+	Html,
+	Main,
+	NextScript,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -18,7 +18,6 @@ class MyDocument extends Document {
             sheet.collectStyles(<App {...props} />),
         });
       const initialProps = { ...(await Document.getInitialProps(ctx)) };
-      initialProps.styles = initialProps.styles || sheet.getStyleElement();
 
       return {
         ...initialProps,
