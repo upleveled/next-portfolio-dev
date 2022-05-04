@@ -1,9 +1,9 @@
 diff --git a/node_modules/next/dist/shared/lib/utils.d.ts b/node_modules/next/dist/shared/lib/utils.d.ts
-index b691c80..d768786 100644
+index 0a275aa..d202e5d 100644
 --- a/node_modules/next/dist/shared/lib/utils.d.ts
 +++ b/node_modules/next/dist/shared/lib/utils.d.ts
-@@ -147,7 +147,7 @@ export declare type DocumentContext = NextPageContext & {
-     defaultGetInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps>;
+@@ -149,7 +149,7 @@ export declare type DocumentContext = NextPageContext & {
+     }): Promise<DocumentInitialProps>;
  };
  export declare type DocumentInitialProps = RenderPageResult & {
 -    styles?: React.ReactElement[] | React.ReactFragment;
