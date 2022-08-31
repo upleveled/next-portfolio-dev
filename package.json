@@ -45,7 +45,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.18.9",
     "@next/eslint-plugin-next": "12.2.5",
-    "@octokit/graphql-schema": "10.74.2",
+    "@octokit/graphql-schema": "12.0.0",
     "@types/node": "18.7.14",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
