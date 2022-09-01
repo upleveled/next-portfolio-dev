@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "patch-package",
     "build": "next build",
     "dev": "next dev -p 3040",
     "gen": "graphql-codegen --config codegen.yml",
@@ -35,7 +34,6 @@
     "formik": "2.2.9",
     "next": "12.2.5",
     "next-seo": "5.5.0",
-    "patch-package": "6.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-google-recaptcha": "2.1.0",
