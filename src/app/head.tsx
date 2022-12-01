@@ -1,6 +1,6 @@
-import { NextSeo } from 'next-seo';
 import seoConfig from 'data/next-seo.config';
+import { NextSeo } from 'next-seo';
 
-export default async function Head() {
+export default function Head() {
   return <NextSeo {...seoConfig} useAppDir={true} />;
 }

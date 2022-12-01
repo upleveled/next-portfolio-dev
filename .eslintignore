@@ -3,3 +3,7 @@ node_modules
 types
 src/generated/graphql.ts
 src/generated/github-schema-loader.js
+.lintstagedrc.js
+next.config.js
+postcss.config.js
+tailwind.config.js
