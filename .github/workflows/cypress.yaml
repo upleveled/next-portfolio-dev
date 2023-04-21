@@ -24,6 +24,6 @@ jobs:
         uses: cypress-io/github-action@v5
       - name: Install and Build
         run: |
-          yarn install
-          yarn build
+          pnpm install
+          pnpm build
           ./packages/core/node_modules/cypress/bin/cypress install
