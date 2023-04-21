@@ -18,3 +18,10 @@ jobs:
       - run: pnpm install
       - run: pnpm eslint . --max-warnings 0
       - run: pnpm tsc
+      # Use Cypress GitHub action to run tests
+      # https://github.com/cypress-io/github-action
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          build: pnpm build
+          start: pnpm start
