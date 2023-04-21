@@ -21,6 +21,6 @@ jobs:
       # https://github.com/cypress-io/github-action
       - name: Cypress run
         uses: cypress-io/github-action@v5
-        run:
+        with:
           build: pnpm build
           start: pnpm start
