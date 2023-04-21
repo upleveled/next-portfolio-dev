@@ -1,5 +1,5 @@
-import Repository from 'components/ui/Repository';
-import getRepos from 'lib/getRepos';
+import getRepos from '../../../lib/getRepos';
+import RepositoryComponent from '../../ui/Repository';
 
 const Projects = async () => {
   const data = await getRepos();
@@ -11,7 +11,7 @@ const Projects = async () => {
         {data &&
           data.map(({ node }) => {
             if (!node) return null;
-            return <Repository key={node.id} {...node} />;
+            return <RepositoryComponent key={node.id} {...node} />;
           })}
       </div>
     </div>

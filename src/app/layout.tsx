@@ -1,8 +1,8 @@
-import 'components/ui/globals.css';
+import '../components/ui/globals.css';
 import { Roboto } from '@next/font/google';
-import config from 'data/config';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import config from '../data/config';
 
 const { url, defaultDescription, defaultTitle, twitter } = config;
 
