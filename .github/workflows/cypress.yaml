@@ -18,12 +18,17 @@ jobs:
       - run: pnpm install
       - run: pnpm eslint . --max-warnings 0
       - run: pnpm tsc
+      - name: Cache NPM and Cypress 📦
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: my-cache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
       # Use Cypress GitHub action to run tests
       # https://github.com/cypress-io/github-action
       - name: Cypress run
         uses: cypress-io/github-action@v5
-      - name: Install and Build
-        run: |
-          pnpm install
-          pnpm build
-          ./packages/core/node_modules/cypress/bin/cypress install
+        run:
+          build: pnpm build
+          start: pnpm start
