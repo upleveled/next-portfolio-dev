@@ -35,7 +35,7 @@ const ContactForm = () => {
         } catch (err) {
           alert('Something went wrong, please try again!');
         } finally {
-          if (state.errors) {
+          if (state.errors.length) {
             state.errors.forEach((error) => {
               setFieldError(error.field || 'email', error.message);
             });
@@ -107,7 +107,7 @@ const ContactForm = () => {
             </div>
           )}
           <div className="text-left">
-            <button type="submit" className="button button-secondary" disabled={isSubmitting}>
+            <button className="button button-secondary" disabled={isSubmitting}>
               Submit
             </button>
           </div>

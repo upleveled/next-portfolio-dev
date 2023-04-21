@@ -6,7 +6,7 @@ type HamburgerProps = {
 };
 
 const Hamburger = ({ sidebar, toggle }: HamburgerProps) => (
-  <div
+  <button
     className={clsx('z-20 top-[1.6rem] right-[1.8rem] cursor-pointer burger-transition absolute block lg:hidden', {
       'right-[66%] md:right-[35%] lg:fixed lg:right-[18%] top-[1.4rem]': sidebar,
     })}

@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <div className="w-full bg-transparent">
-      <div
+      <button
         className={clsx('bg-black/70 w-full h-full transition-all duration-300 ease-in-out', {
           'block z-10': sidebar,
           hidden: !sidebar,
