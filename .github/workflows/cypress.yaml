@@ -14,7 +14,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
-          cache: 'pnpm'
       - run: pnpm install
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
