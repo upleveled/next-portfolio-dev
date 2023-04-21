@@ -15,10 +15,12 @@ jobs:
         with:
           node-version: 'lts/*'
       - run: pnpm install
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+      - run: pnpm eslint . --max-warnings 0
+      - run: pnpm tsc
+      # Use Cypress GitHub action to run tests
+      # https://github.com/cypress-io/github-action
       - name: Cypress run
         uses: cypress-io/github-action@v5
-        with:
+        run:
           build: pnpm build
           start: pnpm start
