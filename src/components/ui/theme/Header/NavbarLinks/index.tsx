@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import clsx from 'clsx';
 import ToggleTheme from 'components/ui/theme/Header/ToggleTheme';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 type NavbarLinksProps = {
   desktop?: boolean;

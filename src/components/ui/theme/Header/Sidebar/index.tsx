@@ -18,7 +18,7 @@ const Sidebar = ({ sidebar, toggle }: SideBarProps) => (
     onClick={toggle}
   >
     <NavbarLinks />
-  </div>
+  </button>
 );
 
 export default Sidebar;

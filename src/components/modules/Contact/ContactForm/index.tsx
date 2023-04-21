@@ -1,9 +1,9 @@
 'use client';
 import { useForm } from '@formspree/react';
 import clsx from 'clsx';
-import { Formik, Form, FastField, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { ErrorMessage, FastField, Form, Formik } from 'formik';
 import Recaptcha from 'react-google-recaptcha';
+import * as Yup from 'yup';
 
 const ContactForm = () => {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM as string);
@@ -88,7 +88,7 @@ const ContactForm = () => {
             />
             <ErrorMessage className="text-red-600 block mt-1" component="span" name="message" />
           </div>
-          {values.name && values.email && values.message && process.env.NODE_ENV !== 'development' && (
+          {!!values.name && !!values.email && !!values.message && process.env.NODE_ENV !== 'development' && (
             <div className="relative mb-4">
               <FastField
                 component={Recaptcha}

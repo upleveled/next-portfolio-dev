@@ -27,7 +27,7 @@ const Hamburger = ({ sidebar, toggle }: HamburgerProps) => (
         'bg-brand-primary dark:bg-white -translate-y-[7px] -rotate-45': sidebar,
       })}
     />
-  </div>
+  </button>
 );
 
 export default Hamburger;
