@@ -35,7 +35,7 @@ const ContactForm = () => {
         } catch (err) {
           alert('Something went wrong, please try again!');
         } finally {
-          if (state.errors.length) {
+          if (state.errors) {
             state.errors.forEach((error) => {
               setFieldError(error.field || 'email', error.message);
             });
