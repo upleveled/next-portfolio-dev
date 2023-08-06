@@ -38,7 +38,7 @@ const ContactForm = () => {
           if (state.errors) {
             [
               ...state.errors.getFormErrors(),
-              ...errors.getAllFieldErrors(),
+              ...state.errors.getAllFieldErrors(),
             ].forEach((error) => {
               setFieldError(
                 'field' in error ? error.field : 'email',
