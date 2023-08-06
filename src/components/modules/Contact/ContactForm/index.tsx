@@ -36,10 +36,16 @@ const ContactForm = () => {
           alert('Something went wrong, please try again!');
         } finally {
           if (state.errors) {
-            [
-              ...state.errors.getFormErrors(),
-              ...state.errors.getAllFieldErrors(),
-            ].forEach((error) => {
+            const fieldErrors = state.errors
+              .getAllFieldErrors()
+              .flatMap(([field, errors]) => {
+                return errors.map((error) => ({
+                  field: field,
+                  message: error.message,
+                }));
+              });
+
+            [...state.errors.getFormErrors(), fieldErrors].forEach((error) => {
               setFieldError(
                 'field' in error ? error.field : 'email',
                 error.message,
