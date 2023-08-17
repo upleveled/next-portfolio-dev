@@ -5,6 +5,9 @@ jobs:
   e2e-tests:
     name: Playwright test
     runs-on: ubuntu-latest # or macos-latest, windows-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
+      NEXT_PUBLIC_FORM: ${{ secrets.NEXT_PUBLIC_FORM }}
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
