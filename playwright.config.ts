@@ -9,7 +9,9 @@ const config: PlaywrightTestConfig = {
   },
   testIgnore: '**/util/__tests__/**',
   retries: process.env.CI ? 2 : 0,
-  reporter: process.env.CI ? 'list' : [['html', { outputFolder: 'playwright/report/' }]],
+  reporter: process.env.CI
+    ? 'list'
+    : [['html', { outputFolder: 'playwright/report/' }]],
   outputDir: 'playwright/test-results/',
   use: {
     trace: 'on-first-retry',
