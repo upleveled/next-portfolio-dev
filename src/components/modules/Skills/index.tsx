@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Skills = () => (
   <div
-    data-cy="skills"
+    data-test-id="skills"
     className="bg-[url('/assets/illustrations/details.svg')] bg-contain bg-no-repeat bg-left-top"
     id="about"
   >
