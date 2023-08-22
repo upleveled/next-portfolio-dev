@@ -8,3 +8,7 @@ dist
 
 # Next.js build folder
 .next
+src/generated/graphql.ts
+src/generated/github-schema-loader.js
+.lintstagedrc.js
+postcss.config.js
