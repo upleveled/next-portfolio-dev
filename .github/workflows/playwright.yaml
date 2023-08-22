@@ -1,9 +1,9 @@
-name: Playwright Test
+name: Playwright Tests
 on: push
 
 jobs:
-  e2e-tests:
-    name: Playwright Test
+  playwright-tests:
+    name: Playwright Tests
     runs-on: ubuntu-latest # or macos-latest, windows-latest
     env:
       GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
@@ -32,7 +32,7 @@ jobs:
       # https://github.com/microsoft/playwright/issues/7249#issuecomment-1385567519
       # https://playwrightsolutions.com/playwright-github-action-to-cache-the-browser-binaries/
       - name: Get installed Playwright version for cache key
-        run: echo "PLAYWRIGHT_VERSION=$(yq eval '.version' --output-format=yaml node_modules/@playwright/test/package.json)" >> $GITHUB_ENV
+        run: echo "PLAYWRIGHT_VERSION=$(yq eval '.version' --output-format=yaml ./node_modules/@playwright/test/package.json)" >> $GITHUB_ENV
       - name: Cache Playwright browser binaries
         uses: actions/cache@v3
         id: playwright-browser-cache
