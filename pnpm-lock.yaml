@@ -43,6 +43,9 @@ devDependencies:
   '@graphql-codegen/cli':
     specifier: 5.0.0
     version: 5.0.0(@types/node@20.8.10)(graphql@16.7.1)
+  '@graphql-codegen/typescript':
+    specifier: ^4.0.1
+    version: 4.0.1(graphql@16.7.1)
   '@graphql-codegen/typescript-operations':
     specifier: ^4.0.1
     version: 4.0.1(graphql@16.7.1)
