@@ -2,7 +2,6 @@ import ForkIcon from '../../../components/ui/Icons/Fork';
 import StarIcon from '../../../components/ui/Icons/Star';
 import { Repository } from '../../../generated/graphql';
 
-const a = 1;
 const RepositoryComponent = ({
   name,
   description,
