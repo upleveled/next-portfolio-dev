@@ -41,3 +41,6 @@ yarn-error.log*
 /playwright/.cache/
 
 src/generated/graphql.ts
+
+# pnpm v8-compile-cache dependency https://github.com/upleveled/next-portfolio-dev/pull/98#issuecomment-1817581049
+v8-compile-cache*/
