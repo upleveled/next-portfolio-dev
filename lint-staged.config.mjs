@@ -1,10 +1,6 @@
 const path = require('node:path');
 
-/**
- * @param {string[]} filenames
- */
-
-const buildEslintCommand = (filenames) =>
+const buildEslintCommand = (/** @type {string[]} */ filenames) =>
   `next lint --fix --file ${filenames
     .map((f) => path.relative(process.cwd(), f))
     .join(' --file ')}`;
