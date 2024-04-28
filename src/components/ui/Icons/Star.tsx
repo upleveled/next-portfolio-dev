@@ -1,7 +1,11 @@
 import clsx from 'clsx';
 
 const Star = ({ className }: { className?: string }) => (
-  <svg className={clsx('w-4 h-4', className)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <svg
+    className={clsx('w-4 h-4', className)}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
     <path
       fill="currentColor"
       fillRule="evenodd"
