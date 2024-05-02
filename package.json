@@ -28,7 +28,7 @@
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
-    "@octokit/graphql-schema": "14.46.1",
+    "@octokit/graphql-schema": "15.15.0",
     "@playwright/test": "^1.37.0",
     "@types/eslint": "8.56.10",
     "@types/node": "20.12.8",
