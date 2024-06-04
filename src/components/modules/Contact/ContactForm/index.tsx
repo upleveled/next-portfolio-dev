@@ -40,7 +40,7 @@ const ContactForm = () => {
           });
 
           setTimeout(() => resetForm(), 4000);
-        } catch (err) {
+        } catch {
           alert('Something went wrong, please try again!');
         } finally {
           if (state.errors) {

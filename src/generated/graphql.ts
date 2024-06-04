@@ -12,17 +12,32 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /** A (potentially binary) string encoded using base64. */
   Base64String: { input: any; output: any; }
+  /**
+   * Represents non-fractional signed whole numeric values. Since the value may
+   * exceed the size of a 32-bit integer, it's encoded as a string.
+   */
   BigInt: { input: any; output: any; }
+  /** An ISO-8601 encoded date string. */
   Date: { input: any; output: any; }
+  /** An ISO-8601 encoded UTC date string. */
   DateTime: { input: any; output: any; }
+  /** A Git object ID. */
   GitObjectID: { input: any; output: any; }
+  /** A fully qualified reference name (e.g. `refs/heads/master`). */
   GitRefname: { input: any; output: any; }
+  /** Git SSH string */
   GitSSHRemote: { input: any; output: any; }
+  /** An ISO-8601 encoded date string. Unlike the DateTime type, GitTimestamp is not converted in UTC. */
   GitTimestamp: { input: any; output: any; }
+  /** A string containing HTML code. */
   HTML: { input: any; output: any; }
+  /** An ISO-8601 encoded UTC date string with millisecond precision. */
   PreciseDateTime: { input: any; output: any; }
+  /** An RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string. */
   URI: { input: any; output: any; }
+  /** A valid x509 certificate string */
   X509Certificate: { input: any; output: any; }
 };
 
@@ -89,7 +104,6 @@ export type AcceptTopicSuggestionInput = {
    * **Upcoming Change on 2024-04-01 UTC**
    * **Description:** `name` will be removed.
    * **Reason:** Suggested topics are no longer supported
-   *
    */
   name?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -98,7 +112,6 @@ export type AcceptTopicSuggestionInput = {
    * **Upcoming Change on 2024-04-01 UTC**
    * **Description:** `repositoryId` will be removed.
    * **Reason:** Suggested topics are no longer supported
-   *
    */
   repositoryId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -351,7 +364,10 @@ export type AddProjectV2DraftIssueInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
   /** The ID of the Project to add the draft issue to. */
   projectId: Scalars['ID']['input'];
-  /** The title of the draft issue. A project item can also be created by providing the URL of an Issue or Pull Request if you have access. */
+  /**
+   * The title of the draft issue. A project item can also be created by providing
+   * the URL of an Issue or Pull Request if you have access.
+   */
   title: Scalars['String']['input'];
 };
 
@@ -391,7 +407,6 @@ export type AddPullRequestReviewCommentInput = {
    * **Upcoming Change on 2023-10-01 UTC**
    * **Description:** `body` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
    * **Reason:** We are deprecating the addPullRequestReviewComment mutation
-   *
    */
   body?: InputMaybe<Scalars['String']['input']>;
   /** A unique identifier for the client performing the mutation. */
@@ -402,7 +417,6 @@ export type AddPullRequestReviewCommentInput = {
    * **Upcoming Change on 2023-10-01 UTC**
    * **Description:** `commitOID` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
    * **Reason:** We are deprecating the addPullRequestReviewComment mutation
-   *
    */
   commitOID?: InputMaybe<Scalars['GitObjectID']['input']>;
   /**
@@ -411,7 +425,6 @@ export type AddPullRequestReviewCommentInput = {
    * **Upcoming Change on 2023-10-01 UTC**
    * **Description:** `inReplyTo` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
    * **Reason:** We are deprecating the addPullRequestReviewComment mutation
-   *
    */
   inReplyTo?: InputMaybe<Scalars['ID']['input']>;
   /**
@@ -420,7 +433,6 @@ export type AddPullRequestReviewCommentInput = {
    * **Upcoming Change on 2023-10-01 UTC**
    * **Description:** `path` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
    * **Reason:** We are deprecating the addPullRequestReviewComment mutation
-   *
    */
   path?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -429,25 +441,24 @@ export type AddPullRequestReviewCommentInput = {
    * **Upcoming Change on 2023-10-01 UTC**
    * **Description:** `position` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
    * **Reason:** We are deprecating the addPullRequestReviewComment mutation
-   *
    */
   position?: InputMaybe<Scalars['Int']['input']>;
   /**
    * The node ID of the pull request reviewing
    *
    * **Upcoming Change on 2023-10-01 UTC**
-   * **Description:** `pullRequestId` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
+   * **Description:** `pullRequestId` will be removed. use
+   * addPullRequestReviewThread or addPullRequestReviewThreadReply instead
    * **Reason:** We are deprecating the addPullRequestReviewComment mutation
-   *
    */
   pullRequestId?: InputMaybe<Scalars['ID']['input']>;
   /**
    * The Node ID of the review to modify.
    *
    * **Upcoming Change on 2023-10-01 UTC**
-   * **Description:** `pullRequestReviewId` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
+   * **Description:** `pullRequestReviewId` will be removed. use
+   * addPullRequestReviewThread or addPullRequestReviewThreadReply instead
    * **Reason:** We are deprecating the addPullRequestReviewComment mutation
-   *
    */
   pullRequestReviewId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -475,7 +486,6 @@ export type AddPullRequestReviewInput = {
    * **Upcoming Change on 2023-10-01 UTC**
    * **Description:** `comments` will be removed. use the `threads` argument instead
    * **Reason:** We are deprecating comment fields that use diff-relative positioning
-   *
    */
   comments?: InputMaybe<Array<InputMaybe<DraftPullRequestReviewComment>>>;
   /** The commit OID the review pertains to. */
@@ -505,7 +515,10 @@ export type AddPullRequestReviewThreadInput = {
   body: Scalars['String']['input'];
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The line of the blob to which the thread refers, required for line-level threads. The end of the line range for multi-line comments. */
+  /**
+   * The line of the blob to which the thread refers, required for line-level
+   * threads. The end of the line range for multi-line comments.
+   */
   line?: InputMaybe<Scalars['Int']['input']>;
   /** Path to the file being commented on. */
   path: Scalars['String']['input'];
@@ -669,6 +682,8 @@ export type AddedToProjectEvent = Node & {
 export type AnnouncementBanner = {
   /** The text of the announcement */
   announcement?: Maybe<Scalars['String']['output']>;
+  /** The date the announcement was created */
+  announcementCreatedAt?: Maybe<Scalars['DateTime']['output']>;
   /** The expiration date of the announcement, if any */
   announcementExpiresAt?: Maybe<Scalars['DateTime']['output']>;
   /** Whether the announcement can be dismissed by the user */
@@ -916,15 +931,24 @@ export type AutoMergeRequest = {
   __typename?: 'AutoMergeRequest';
   /** The email address of the author of this auto-merge request. */
   authorEmail?: Maybe<Scalars['String']['output']>;
-  /** The commit message of the auto-merge request. If a merge queue is required by the base branch, this value will be set by the merge queue when merging. */
+  /**
+   * The commit message of the auto-merge request. If a merge queue is required by
+   * the base branch, this value will be set by the merge queue when merging.
+   */
   commitBody?: Maybe<Scalars['String']['output']>;
-  /** The commit title of the auto-merge request. If a merge queue is required by the base branch, this value will be set by the merge queue when merging */
+  /**
+   * The commit title of the auto-merge request. If a merge queue is required by
+   * the base branch, this value will be set by the merge queue when merging
+   */
   commitHeadline?: Maybe<Scalars['String']['output']>;
   /** When was this auto-merge request was enabled. */
   enabledAt?: Maybe<Scalars['DateTime']['output']>;
   /** The actor who created the auto-merge request. */
   enabledBy?: Maybe<Actor>;
-  /** The merge method of the auto-merge request. If a merge queue is required by the base branch, this value will be set by the merge queue when merging. */
+  /**
+   * The merge method of the auto-merge request. If a merge queue is required by
+   * the base branch, this value will be set by the merge queue when merging.
+   */
   mergeMethod: PullRequestMergeMethod;
   /** The pull request that this auto-merge request is set against. */
   pullRequest: PullRequest;
@@ -1057,7 +1081,12 @@ export type Blame = {
 /** Represents a range of information from a Git blame. */
 export type BlameRange = {
   __typename?: 'BlameRange';
-  /** Identifies the recency of the change, from 1 (new) to 10 (old). This is calculated as a 2-quantile and determines the length of distance between the median age of all the changes in the file and the recency of the current range's change. */
+  /**
+   * Identifies the recency of the change, from 1 (new) to 10 (old). This is
+   * calculated as a 2-quantile and determines the length of distance between the
+   * median age of all the changes in the file and the recency of the current
+   * range's change.
+   */
   age: Scalars['Int']['output'];
   /** Identifies the line author */
   commit: Commit;
@@ -1172,7 +1201,10 @@ export type BranchProtectionRule = Node & {
   id: Scalars['ID']['output'];
   /** Can admins override branch protection. */
   isAdminEnforced: Scalars['Boolean']['output'];
-  /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
+  /**
+   * Whether users can pull changes from upstream when the branch is locked. Set to
+   * `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+   */
   lockAllowsFetchAndMerge: Scalars['Boolean']['output'];
   /** Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. */
   lockBranch: Scalars['Boolean']['output'];
@@ -1328,7 +1360,10 @@ export type BranchProtectionRuleEdge = {
   node?: Maybe<BranchProtectionRule>;
 };
 
-/** Information about a sponsorship to make for a user or organization with a GitHub Sponsors profile, as part of sponsoring many users or organizations at once. */
+/**
+ * Information about a sponsorship to make for a user or organization with a GitHub
+ * Sponsors profile, as part of sponsoring many users or organizations at once.
+ */
 export type BulkSponsorship = {
   /** The amount to pay to the sponsorable in US dollars. Valid values: 1-12000. */
   amount: Scalars['Int']['input'];
@@ -1474,9 +1509,15 @@ export type CancelEnterpriseAdminInvitationPayload = {
 export type CancelSponsorshipInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given. */
+  /**
+   * The ID of the user or organization who is acting as the sponsor, paying for
+   * the sponsorship. Required if sponsorLogin is not given.
+   */
   sponsorId?: InputMaybe<Scalars['ID']['input']>;
-  /** The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given. */
+  /**
+   * The username of the user or organization who is acting as the sponsor, paying
+   * for the sponsorship. Required if sponsorId is not given.
+   */
   sponsorLogin?: InputMaybe<Scalars['String']['input']>;
   /** The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given. */
   sponsorableId?: InputMaybe<Scalars['ID']['input']>;
@@ -1505,7 +1546,10 @@ export type ChangeUserStatusInput = {
   limitedAvailability?: InputMaybe<Scalars['Boolean']['input']>;
   /** A short description of your current status. */
   message?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the organization whose members will be allowed to see the status. If omitted, the status will be publicly visible. */
+  /**
+   * The ID of the organization whose members will be allowed to see the status. If
+   * omitted, the status will be publicly visible.
+   */
   organizationId?: InputMaybe<Scalars['ID']['input']>;
 };
 
@@ -2071,7 +2115,10 @@ export type CloneTemplateRepositoryInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
   /** A short description of the new repository. */
   description?: InputMaybe<Scalars['String']['input']>;
-  /** Whether to copy all branches from the template to the new repository. Defaults to copying only the default branch of the template. */
+  /**
+   * Whether to copy all branches from the template to the new repository. Defaults
+   * to copying only the default branch of the template.
+   */
   includeAllBranches?: InputMaybe<Scalars['Boolean']['input']>;
   /** The name of the new repository. */
   name: Scalars['String']['input'];
@@ -2200,14 +2247,22 @@ export type CodeOfConduct = Node & {
   url?: Maybe<Scalars['URI']['output']>;
 };
 
-/** Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated. */
+/**
+ * Choose which tools must provide code scanning results before the reference is
+ * updated. When configured, code scanning must be enabled and have results for
+ * both the commit and the reference being updated.
+ */
 export type CodeScanningParameters = {
   __typename?: 'CodeScanningParameters';
   /** Tools that must provide code scanning results for this rule to pass. */
   codeScanningTools: Array<CodeScanningTool>;
 };
 
-/** Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated. */
+/**
+ * Choose which tools must provide code scanning results before the reference is
+ * updated. When configured, code scanning must be enabled and have results for
+ * both the commit and the reference being updated.
+ */
 export type CodeScanningParametersInput = {
   /** Tools that must provide code scanning results for this rule to pass. */
   codeScanningTools: Array<CodeScanningToolInput>;
@@ -2216,9 +2271,16 @@ export type CodeScanningParametersInput = {
 /** A tool that must provide code scanning results for this rule to pass. */
 export type CodeScanningTool = {
   __typename?: 'CodeScanningTool';
-  /** The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)." */
+  /**
+   * The severity level at which code scanning results that raise alerts block a
+   * reference update. For more information on alert severity levels, see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+   */
   alertsThreshold: Scalars['String']['output'];
-  /** The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)." */
+  /**
+   * The severity level at which code scanning results that raise security alerts
+   * block a reference update. For more information on security severity levels,
+   * see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+   */
   securityAlertsThreshold: Scalars['String']['output'];
   /** The name of a code scanning tool */
   tool: Scalars['String']['output'];
@@ -2226,9 +2288,16 @@ export type CodeScanningTool = {
 
 /** A tool that must provide code scanning results for this rule to pass. */
 export type CodeScanningToolInput = {
-  /** The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)." */
+  /**
+   * The severity level at which code scanning results that raise alerts block a
+   * reference update. For more information on alert severity levels, see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+   */
   alertsThreshold: Scalars['String']['input'];
-  /** The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)." */
+  /**
+   * The severity level at which code scanning results that raise security alerts
+   * block a reference update. For more information on security severity levels,
+   * see "[About code scanning alerts](${externalDocsUrl}/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."
+   */
   securityAlertsThreshold: Scalars['String']['input'];
   /** The name of a code scanning tool */
   tool: Scalars['String']['input'];
@@ -2347,7 +2416,11 @@ export type Commit = GitObject & Node & Subscribable & UniformResourceLocatable 
   abbreviatedOid: Scalars['String']['output'];
   /** The number of additions in this commit. */
   additions: Scalars['Int']['output'];
-  /** The merged Pull Request that introduced the commit to the repository. If the commit is not present in the default branch, additionally returns open Pull Requests associated with the commit */
+  /**
+   * The merged Pull Request that introduced the commit to the repository. If the
+   * commit is not present in the default branch, additionally returns open Pull
+   * Requests associated with the commit
+   */
   associatedPullRequests?: Maybe<PullRequestConnection>;
   /** Authorship details of the commit. */
   author?: Maybe<GitActor>;
@@ -2358,17 +2431,22 @@ export type Commit = GitObject & Node & Subscribable & UniformResourceLocatable 
   /**
    * The list of authors for this commit based on the git author and the Co-authored-by
    * message trailer. The git author will always be first.
-   *
    */
   authors: GitActorConnection;
   /** Fetches `git blame` information. */
   blame: Blame;
   /**
-   * We recommend using the `changedFilesIfAvailable` field instead of `changedFiles`, as `changedFiles` will cause your request to return an error if GitHub is unable to calculate the number of changed files.
+   * We recommend using the `changedFilesIfAvailable` field instead of
+   * `changedFiles`, as `changedFiles` will cause your request to return an error
+   * if GitHub is unable to calculate the number of changed files.
    * @deprecated `changedFiles` will be removed. Use `changedFilesIfAvailable` instead. Removal on 2023-01-01 UTC.
    */
   changedFiles: Scalars['Int']['output'];
-  /** The number of changed files in this commit. If GitHub is unable to calculate the number of changed files (for example due to a timeout), this will return `null`. We recommend using this field instead of `changedFiles`. */
+  /**
+   * The number of changed files in this commit. If GitHub is unable to calculate
+   * the number of changed files (for example due to a timeout), this will return
+   * `null`. We recommend using this field instead of `changedFiles`.
+   */
   changedFilesIfAvailable?: Maybe<Scalars['Int']['output']>;
   /** The check suites associated with a commit. */
   checkSuites?: Maybe<CheckSuiteConnection>;
@@ -2547,7 +2625,10 @@ export type CommitSubmodulesArgs = {
 export type CommitAuthor = {
   /** Email addresses to filter by. Commits authored by any of the specified email addresses will be returned. */
   emails?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** ID of a User to filter by. If non-null, only commits authored by this user will be returned. This field takes precedence over emails. */
+  /**
+   * ID of a User to filter by. If non-null, only commits authored by this user
+   * will be returned. This field takes precedence over emails.
+   */
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
@@ -2607,7 +2688,11 @@ export type CommitComment = Comment & Deletable & Minimizable & Node & Reactable
   isMinimized: Scalars['Boolean']['output'];
   /** The moment the editor made the last edit */
   lastEditedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+  /**
+   * Returns why the comment was minimized. One of `abuse`, `off-topic`,
+   * `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and
+   * formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+   */
   minimizedReason?: Maybe<Scalars['String']['output']>;
   /** Identifies the file path associated with the comment. */
   path?: Maybe<Scalars['String']['output']>;
@@ -2840,8 +2925,6 @@ export type CommitMessagePatternParametersInput = {
  *       "repositoryNameWithOwner": "github/graphql-client",
  *       "branchName": "main"
  *     }
- *
- *
  */
 export type CommittableBranch = {
   /** The unqualified name of the branch to append the commit to. */
@@ -2966,7 +3049,6 @@ export type Contribution = {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** When this contribution was made. */
@@ -2975,10 +3057,7 @@ export type Contribution = {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -3004,7 +3083,10 @@ export type ContributionCalendarDay = {
   color: Scalars['String']['output'];
   /** How many contributions were made by the user on this day. */
   contributionCount: Scalars['Int']['output'];
-  /** Indication of contributions, relative to other days. Can be used to indicate which color to represent this day on a calendar. */
+  /**
+   * Indication of contributions, relative to other days. Can be used to indicate
+   * which color to represent this day on a calendar.
+   */
   contributionLevel: ContributionLevel;
   /** The day this square represents. */
   date: Scalars['Date']['output'];
@@ -3063,26 +3145,45 @@ export type ContributionsCollection = {
   contributionCalendar: ContributionCalendar;
   /** The years the user has been making contributions with the most recent year first. */
   contributionYears: Array<Scalars['Int']['output']>;
-  /**
-   * Determine if this collection's time span ends in the current month.
-   *
-   */
+  /** Determine if this collection's time span ends in the current month. */
   doesEndInCurrentMonth: Scalars['Boolean']['output'];
-  /** The date of the first restricted contribution the user made in this time period. Can only be non-null when the user has enabled private contribution counts. */
+  /**
+   * The date of the first restricted contribution the user made in this time
+   * period. Can only be non-null when the user has enabled private contribution counts.
+   */
   earliestRestrictedContributionDate?: Maybe<Scalars['Date']['output']>;
   /** The ending date and time of this collection. */
   endedAt: Scalars['DateTime']['output'];
-  /** The first issue the user opened on GitHub. This will be null if that issue was opened outside the collection's time range and ignoreTimeRange is false. If the issue is not visible but the user has opted to show private contributions, a RestrictedContribution will be returned. */
+  /**
+   * The first issue the user opened on GitHub. This will be null if that issue was
+   * opened outside the collection's time range and ignoreTimeRange is false. If
+   * the issue is not visible but the user has opted to show private contributions,
+   * a RestrictedContribution will be returned.
+   */
   firstIssueContribution?: Maybe<CreatedIssueOrRestrictedContribution>;
-  /** The first pull request the user opened on GitHub. This will be null if that pull request was opened outside the collection's time range and ignoreTimeRange is not true. If the pull request is not visible but the user has opted to show private contributions, a RestrictedContribution will be returned. */
+  /**
+   * The first pull request the user opened on GitHub. This will be null if that
+   * pull request was opened outside the collection's time range and
+   * ignoreTimeRange is not true. If the pull request is not visible but the user
+   * has opted to show private contributions, a RestrictedContribution will be returned.
+   */
   firstPullRequestContribution?: Maybe<CreatedPullRequestOrRestrictedContribution>;
-  /** The first repository the user created on GitHub. This will be null if that first repository was created outside the collection's time range and ignoreTimeRange is false. If the repository is not visible, then a RestrictedContribution is returned. */
+  /**
+   * The first repository the user created on GitHub. This will be null if that
+   * first repository was created outside the collection's time range and
+   * ignoreTimeRange is false. If the repository is not visible, then a
+   * RestrictedContribution is returned.
+   */
   firstRepositoryContribution?: Maybe<CreatedRepositoryOrRestrictedContribution>;
   /** Does the user have any more activity in the timeline that occurred prior to the collection's time range? */
   hasActivityInThePast: Scalars['Boolean']['output'];
   /** Determine if there are any contributions in this collection. */
   hasAnyContributions: Scalars['Boolean']['output'];
-  /** Determine if the user made any contributions in this time frame whose details are not visible because they were made in a private repository. Can only be true if the user enabled private contribution counts. */
+  /**
+   * Determine if the user made any contributions in this time frame whose details
+   * are not visible because they were made in a private repository. Can only be
+   * true if the user enabled private contribution counts.
+   */
   hasAnyRestrictedContributions: Scalars['Boolean']['output'];
   /** Whether or not the collector's time span is all within the same day. */
   isSingleDay: Scalars['Boolean']['output'];
@@ -3090,32 +3191,34 @@ export type ContributionsCollection = {
   issueContributions: CreatedIssueContributionConnection;
   /** Issue contributions made by the user, grouped by repository. */
   issueContributionsByRepository: Array<IssueContributionsByRepository>;
-  /** When the user signed up for GitHub. This will be null if that sign up date falls outside the collection's time range and ignoreTimeRange is false. */
+  /**
+   * When the user signed up for GitHub. This will be null if that sign up date
+   * falls outside the collection's time range and ignoreTimeRange is false.
+   */
   joinedGitHubContribution?: Maybe<JoinedGitHubContribution>;
-  /** The date of the most recent restricted contribution the user made in this time period. Can only be non-null when the user has enabled private contribution counts. */
+  /**
+   * The date of the most recent restricted contribution the user made in this time
+   * period. Can only be non-null when the user has enabled private contribution counts.
+   */
   latestRestrictedContributionDate?: Maybe<Scalars['Date']['output']>;
   /**
    * When this collection's time range does not include any activity from the user, use this
    * to get a different collection from an earlier time range that does have activity.
-   *
    */
   mostRecentCollectionWithActivity?: Maybe<ContributionsCollection>;
   /**
    * Returns a different contributions collection from an earlier time range than this one
    * that does not have any contributions.
-   *
    */
   mostRecentCollectionWithoutActivity?: Maybe<ContributionsCollection>;
   /**
    * The issue the user opened on GitHub that received the most comments in the specified
    * time frame.
-   *
    */
   popularIssueContribution?: Maybe<CreatedIssueContribution>;
   /**
    * The pull request the user opened on GitHub that received the most comments in the
    * specified time frame.
-   *
    */
   popularPullRequestContribution?: Maybe<CreatedPullRequestContribution>;
   /** Pull request contributions made by the user. */
@@ -3125,14 +3228,16 @@ export type ContributionsCollection = {
   /**
    * Pull request review contributions made by the user. Returns the most recently
    * submitted review for each PR reviewed by the user.
-   *
    */
   pullRequestReviewContributions: CreatedPullRequestReviewContributionConnection;
   /** Pull request review contributions made by the user, grouped by repository. */
   pullRequestReviewContributionsByRepository: Array<PullRequestReviewContributionsByRepository>;
   /** A list of repositories owned by the user that the user created in this time range. */
   repositoryContributions: CreatedRepositoryContributionConnection;
-  /** A count of contributions made by the user that the viewer cannot access. Only non-zero when the user has chosen to share their private contribution counts. */
+  /**
+   * A count of contributions made by the user that the viewer cannot access. Only
+   * non-zero when the user has chosen to share their private contribution counts.
+   */
   restrictedContributionsCount: Scalars['Int']['output'];
   /** The beginning date and time of this collection. */
   startedAt: Scalars['DateTime']['output'];
@@ -3354,6 +3459,19 @@ export type ConvertedToDiscussionEvent = Node & {
   id: Scalars['ID']['output'];
 };
 
+/** Copilot endpoint information */
+export type CopilotEndpoints = {
+  __typename?: 'CopilotEndpoints';
+  /** Copilot API endpoint */
+  api: Scalars['String']['output'];
+  /** Copilot origin tracker endpoint */
+  originTracker: Scalars['String']['output'];
+  /** Copilot proxy endpoint */
+  proxy: Scalars['String']['output'];
+  /** Copilot telemetry endpoint */
+  telemetry: Scalars['String']['output'];
+};
+
 /** Autogenerated input type of CopyProjectV2 */
 export type CopyProjectV2Input = {
   /** A unique identifier for the client performing the mutation. */
@@ -3420,7 +3538,10 @@ export type CreateBranchProtectionRuleInput = {
   dismissesStaleReviews?: InputMaybe<Scalars['Boolean']['input']>;
   /** Can admins override branch protection. */
   isAdminEnforced?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
+  /**
+   * Whether users can pull changes from upstream when the branch is locked. Set to
+   * `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+   */
   lockAllowsFetchAndMerge?: InputMaybe<Scalars['Boolean']['input']>;
   /** Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. */
   lockBranch?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3570,7 +3691,10 @@ export type CreateDeploymentInput = {
   refId: Scalars['ID']['input'];
   /** The node ID of the repository. */
   repositoryId: Scalars['ID']['input'];
-  /** The status contexts to verify against commit status checks. To bypass required contexts, pass an empty array. Defaults to all unique contexts. */
+  /**
+   * The status contexts to verify against commit status checks. To bypass required
+   * contexts, pass an empty array. Defaults to all unique contexts.
+   */
   requiredContexts?: InputMaybe<Array<Scalars['String']['input']>>;
   /** Specifies a task to execute. */
   task?: InputMaybe<Scalars['String']['input']>;
@@ -3589,7 +3713,11 @@ export type CreateDeploymentPayload = {
 
 /** Autogenerated input type of CreateDeploymentStatus */
 export type CreateDeploymentStatusInput = {
-  /** Adds a new inactive status to all non-transient, non-production environment deployments with the same repository and environment name as the created status's deployment. */
+  /**
+   * Adds a new inactive status to all non-transient, non-production environment
+   * deployments with the same repository and environment name as the created
+   * status's deployment.
+   */
   autoInactive?: InputMaybe<Scalars['Boolean']['input']>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -3601,7 +3729,11 @@ export type CreateDeploymentStatusInput = {
   environment?: InputMaybe<Scalars['String']['input']>;
   /** Sets the URL for accessing your environment. */
   environmentUrl?: InputMaybe<Scalars['String']['input']>;
-  /** The log URL to associate with this status.       This URL should contain output to keep the user updated while the task is running       or serve as historical information for what happened in the deployment. */
+  /**
+   * The log URL to associate with this status.       This URL should contain
+   * output to keep the user updated while the task is running       or serve as
+   * historical information for what happened in the deployment.
+   */
   logUrl?: InputMaybe<Scalars['String']['input']>;
   /** The state of the deployment. */
   state: DeploymentStatusState;
@@ -3891,7 +4023,6 @@ export type CreatePullRequestInput = {
    * The name of the branch you want your changes pulled into. This should be an existing branch
    * on the current repository. You cannot update the base branch on a pull request to point
    * to another repository.
-   *
    */
   baseRefName: Scalars['String']['input'];
   /** The contents of the pull request. */
@@ -3903,7 +4034,6 @@ export type CreatePullRequestInput = {
   /**
    * The name of the branch where your changes are implemented. For cross-repository pull requests
    * in the same network, namespace `head_ref_name` with a user like this: `username:branch`.
-   *
    */
   headRefName: Scalars['String']['input'];
   /** The Node ID of the head repository. */
@@ -3962,9 +4092,15 @@ export type CreateRepositoryInput = {
   name: Scalars['String']['input'];
   /** The ID of the owner for the new repository. */
   ownerId?: InputMaybe<Scalars['ID']['input']>;
-  /** When an organization is specified as the owner, this ID identifies the team that should be granted access to the new repository. */
+  /**
+   * When an organization is specified as the owner, this ID identifies the team
+   * that should be granted access to the new repository.
+   */
   teamId?: InputMaybe<Scalars['ID']['input']>;
-  /** Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure. */
+  /**
+   * Whether this repository should be marked as a template such that anyone who
+   * can access it can create new repositories with the same files and directory structure.
+   */
   template?: InputMaybe<Scalars['Boolean']['input']>;
   /** Indicates the repository's visibility level. */
   visibility: RepositoryVisibility;
@@ -4010,21 +4146,52 @@ export type CreateRepositoryRulesetPayload = {
 
 /** Autogenerated input type of CreateSponsorsListing */
 export type CreateSponsorsListingInput = {
-  /** The country or region where the sponsorable's bank account is located. Required if fiscalHostLogin is not specified, ignored when fiscalHostLogin is specified. */
+  /**
+   * The country or region where the sponsorable's bank account is located.
+   * Required if fiscalHostLogin is not specified, ignored when fiscalHostLogin is specified.
+   */
   billingCountryOrRegionCode?: InputMaybe<SponsorsCountryOrRegionCode>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The email address we should use to contact you about the GitHub Sponsors profile being created. This will not be shared publicly. Must be a verified email address already on your GitHub account. Only relevant when the sponsorable is yourself. Defaults to your primary email address on file if omitted. */
+  /**
+   * The email address we should use to contact you about the GitHub Sponsors
+   * profile being created. This will not be shared publicly. Must be a verified
+   * email address already on your GitHub account. Only relevant when the
+   * sponsorable is yourself. Defaults to your primary email address on file if omitted.
+   */
   contactEmail?: InputMaybe<Scalars['String']['input']>;
-  /** The username of the supported fiscal host's GitHub organization, if you want to receive sponsorship payouts through a fiscal host rather than directly to a bank account. For example, 'Open-Source-Collective' for Open Source Collective or 'numfocus' for numFOCUS. Case insensitive. See https://docs.github.com/sponsors/receiving-sponsorships-through-github-sponsors/using-a-fiscal-host-to-receive-github-sponsors-payouts for more information. */
+  /**
+   * The username of the supported fiscal host's GitHub organization, if you want
+   * to receive sponsorship payouts through a fiscal host rather than directly to a
+   * bank account. For example, 'Open-Source-Collective' for Open Source Collective
+   * or 'numfocus' for numFOCUS. Case insensitive. See https://docs.github.com/sponsors/receiving-sponsorships-through-github-sponsors/using-a-fiscal-host-to-receive-github-sponsors-payouts
+   * for more information.
+   */
   fiscalHostLogin?: InputMaybe<Scalars['String']['input']>;
-  /** The URL for your profile page on the fiscal host's website, e.g., https://opencollective.com/babel or https://numfocus.org/project/bokeh. Required if fiscalHostLogin is specified. */
+  /**
+   * The URL for your profile page on the fiscal host's website, e.g.,
+   * https://opencollective.com/babel or https://numfocus.org/project/bokeh.
+   * Required if fiscalHostLogin is specified.
+   */
   fiscallyHostedProjectProfileUrl?: InputMaybe<Scalars['String']['input']>;
-  /** Provide an introduction to serve as the main focus that appears on your GitHub Sponsors profile. It's a great opportunity to help potential sponsors learn more about you, your work, and why their sponsorship is important to you. GitHub-flavored Markdown is supported. */
+  /**
+   * Provide an introduction to serve as the main focus that appears on your GitHub
+   * Sponsors profile. It's a great opportunity to help potential sponsors learn
+   * more about you, your work, and why their sponsorship is important to you.
+   * GitHub-flavored Markdown is supported.
+   */
   fullDescription?: InputMaybe<Scalars['String']['input']>;
-  /** The country or region where the sponsorable resides. This is for tax purposes. Required if the sponsorable is yourself, ignored when sponsorableLogin specifies an organization. */
+  /**
+   * The country or region where the sponsorable resides. This is for tax purposes.
+   * Required if the sponsorable is yourself, ignored when sponsorableLogin
+   * specifies an organization.
+   */
   residenceCountryOrRegionCode?: InputMaybe<SponsorsCountryOrRegionCode>;
-  /** The username of the organization to create a GitHub Sponsors profile for, if desired. Defaults to creating a GitHub Sponsors profile for the authenticated user if omitted. */
+  /**
+   * The username of the organization to create a GitHub Sponsors profile for, if
+   * desired. Defaults to creating a GitHub Sponsors profile for the authenticated
+   * user if omitted.
+   */
   sponsorableLogin?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -4047,17 +4214,37 @@ export type CreateSponsorsTierInput = {
   description: Scalars['String']['input'];
   /** Whether sponsorships using this tier should happen monthly/yearly or just once. */
   isRecurring?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Whether to make the tier available immediately for sponsors to choose. Defaults to creating a draft tier that will not be publicly visible. */
+  /**
+   * Whether to make the tier available immediately for sponsors to choose.
+   * Defaults to creating a draft tier that will not be publicly visible.
+   */
   publish?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Optional ID of the private repository that sponsors at this tier should gain read-only access to. Must be owned by an organization. */
+  /**
+   * Optional ID of the private repository that sponsors at this tier should gain
+   * read-only access to. Must be owned by an organization.
+   */
   repositoryId?: InputMaybe<Scalars['ID']['input']>;
-  /** Optional name of the private repository that sponsors at this tier should gain read-only access to. Must be owned by an organization. Necessary if repositoryOwnerLogin is given. Will be ignored if repositoryId is given. */
+  /**
+   * Optional name of the private repository that sponsors at this tier should gain
+   * read-only access to. Must be owned by an organization. Necessary if
+   * repositoryOwnerLogin is given. Will be ignored if repositoryId is given.
+   */
   repositoryName?: InputMaybe<Scalars['String']['input']>;
-  /** Optional login of the organization owner of the private repository that sponsors at this tier should gain read-only access to. Necessary if repositoryName is given. Will be ignored if repositoryId is given. */
+  /**
+   * Optional login of the organization owner of the private repository that
+   * sponsors at this tier should gain read-only access to. Necessary if
+   * repositoryName is given. Will be ignored if repositoryId is given.
+   */
   repositoryOwnerLogin?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the user or organization who owns the GitHub Sponsors profile. Defaults to the current user if omitted and sponsorableLogin is not given. */
+  /**
+   * The ID of the user or organization who owns the GitHub Sponsors profile.
+   * Defaults to the current user if omitted and sponsorableLogin is not given.
+   */
   sponsorableId?: InputMaybe<Scalars['ID']['input']>;
-  /** The username of the user or organization who owns the GitHub Sponsors profile. Defaults to the current user if omitted and sponsorableId is not given. */
+  /**
+   * The username of the user or organization who owns the GitHub Sponsors profile.
+   * Defaults to the current user if omitted and sponsorableId is not given.
+   */
   sponsorableLogin?: InputMaybe<Scalars['String']['input']>;
   /** Optional message new sponsors at this tier will receive. */
   welcomeMessage?: InputMaybe<Scalars['String']['input']>;
@@ -4080,13 +4267,22 @@ export type CreateSponsorshipInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
   /** Whether the sponsorship should happen monthly/yearly or just this one time. Required if a tierId is not specified. */
   isRecurring?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Specify whether others should be able to see that the sponsor is sponsoring the sponsorable. Public visibility still does not reveal which tier is used. */
+  /**
+   * Specify whether others should be able to see that the sponsor is sponsoring
+   * the sponsorable. Public visibility still does not reveal which tier is used.
+   */
   privacyLevel?: InputMaybe<SponsorshipPrivacy>;
   /** Whether the sponsor should receive email updates from the sponsorable. */
   receiveEmails?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given. */
+  /**
+   * The ID of the user or organization who is acting as the sponsor, paying for
+   * the sponsorship. Required if sponsorLogin is not given.
+   */
   sponsorId?: InputMaybe<Scalars['ID']['input']>;
-  /** The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given. */
+  /**
+   * The username of the user or organization who is acting as the sponsor, paying
+   * for the sponsorship. Required if sponsorId is not given.
+   */
   sponsorLogin?: InputMaybe<Scalars['String']['input']>;
   /** The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given. */
   sponsorableId?: InputMaybe<Scalars['ID']['input']>;
@@ -4109,11 +4305,19 @@ export type CreateSponsorshipPayload = {
 export type CreateSponsorshipsInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Specify whether others should be able to see that the sponsor is sponsoring the sponsorables. Public visibility still does not reveal the dollar value of the sponsorship. */
+  /**
+   * Specify whether others should be able to see that the sponsor is sponsoring
+   * the sponsorables. Public visibility still does not reveal the dollar value of
+   * the sponsorship.
+   */
   privacyLevel?: InputMaybe<SponsorshipPrivacy>;
   /** Whether the sponsor should receive email updates from the sponsorables. */
   receiveEmails?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Whether the sponsorships created should continue each billing cycle for the sponsor (monthly or annually), versus lasting only a single month. Defaults to one-time sponsorships. */
+  /**
+   * Whether the sponsorships created should continue each billing cycle for the
+   * sponsor (monthly or annually), versus lasting only a single month. Defaults to
+   * one-time sponsorships.
+   */
   recurring?: InputMaybe<Scalars['Boolean']['input']>;
   /** The username of the user or organization who is acting as the sponsor, paying for the sponsorships. */
   sponsorLogin: Scalars['String']['input'];
@@ -4136,9 +4340,10 @@ export type CreateTeamDiscussionCommentInput = {
    * The content of the comment. This field is required.
    *
    * **Upcoming Change on 2024-07-01 UTC**
-   * **Description:** `body` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
+   * **Description:** `body` will be removed. Follow the guide at
+   * https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to
+   * find a suitable replacement.
    * **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-   *
    */
   body?: InputMaybe<Scalars['String']['input']>;
   /** A unique identifier for the client performing the mutation. */
@@ -4147,9 +4352,10 @@ export type CreateTeamDiscussionCommentInput = {
    * The ID of the discussion to which the comment belongs. This field is required.
    *
    * **Upcoming Change on 2024-07-01 UTC**
-   * **Description:** `discussionId` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
+   * **Description:** `discussionId` will be removed. Follow the guide at
+   * https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to
+   * find a suitable replacement.
    * **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-   *
    */
   discussionId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -4172,38 +4378,44 @@ export type CreateTeamDiscussionInput = {
    * The content of the discussion. This field is required.
    *
    * **Upcoming Change on 2024-07-01 UTC**
-   * **Description:** `body` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
+   * **Description:** `body` will be removed. Follow the guide at
+   * https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to
+   * find a suitable replacement.
    * **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-   *
    */
   body?: InputMaybe<Scalars['String']['input']>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
   /**
-   * If true, restricts the visibility of this discussion to team members and organization owners. If false or not specified, allows any organization member to view this discussion.
+   * If true, restricts the visibility of this discussion to team members and
+   * organization owners. If false or not specified, allows any organization member
+   * to view this discussion.
    *
    * **Upcoming Change on 2024-07-01 UTC**
-   * **Description:** `private` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
+   * **Description:** `private` will be removed. Follow the guide at
+   * https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to
+   * find a suitable replacement.
    * **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-   *
    */
   private?: InputMaybe<Scalars['Boolean']['input']>;
   /**
    * The ID of the team to which the discussion belongs. This field is required.
    *
    * **Upcoming Change on 2024-07-01 UTC**
-   * **Description:** `teamId` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
+   * **Description:** `teamId` will be removed. Follow the guide at
+   * https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to
+   * find a suitable replacement.
    * **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-   *
    */
   teamId?: InputMaybe<Scalars['ID']['input']>;
   /**
    * The title of the discussion. This field is required.
    *
    * **Upcoming Change on 2024-07-01 UTC**
-   * **Description:** `title` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
+   * **Description:** `title` will be removed. Follow the guide at
+   * https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to
+   * find a suitable replacement.
    * **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-   *
    */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -4252,7 +4464,6 @@ export type CreatedCommitContribution = Contribution & {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** When this contribution was made. */
@@ -4263,10 +4474,7 @@ export type CreatedCommitContribution = Contribution & {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -4279,10 +4487,7 @@ export type CreatedCommitContributionConnection = {
   nodes?: Maybe<Array<Maybe<CreatedCommitContribution>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
-  /**
-   * Identifies the total count of commits across days and repositories in the connection.
-   *
-   */
+  /** Identifies the total count of commits across days and repositories in the connection. */
   totalCount: Scalars['Int']['output'];
 };
 
@@ -4302,7 +4507,6 @@ export type CreatedIssueContribution = Contribution & {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** The issue that was opened. */
@@ -4313,10 +4517,7 @@ export type CreatedIssueContribution = Contribution & {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -4352,7 +4553,6 @@ export type CreatedPullRequestContribution = Contribution & {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** When this contribution was made. */
@@ -4363,10 +4563,7 @@ export type CreatedPullRequestContribution = Contribution & {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -4402,7 +4599,6 @@ export type CreatedPullRequestReviewContribution = Contribution & {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** When this contribution was made. */
@@ -4417,10 +4613,7 @@ export type CreatedPullRequestReviewContribution = Contribution & {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -4453,7 +4646,6 @@ export type CreatedRepositoryContribution = Contribution & {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** When this contribution was made. */
@@ -4464,10 +4656,7 @@ export type CreatedRepositoryContribution = Contribution & {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -4531,7 +4720,6 @@ export type DeclineTopicSuggestionInput = {
    * **Upcoming Change on 2024-04-01 UTC**
    * **Description:** `name` will be removed.
    * **Reason:** Suggested topics are no longer supported
-   *
    */
   name?: InputMaybe<Scalars['String']['input']>;
   /**
@@ -4540,7 +4728,6 @@ export type DeclineTopicSuggestionInput = {
    * **Upcoming Change on 2024-04-01 UTC**
    * **Description:** `reason` will be removed.
    * **Reason:** Suggested topics are no longer supported
-   *
    */
   reason?: InputMaybe<TopicSuggestionDeclineReason>;
   /**
@@ -4549,7 +4736,6 @@ export type DeclineTopicSuggestionInput = {
    * **Upcoming Change on 2024-04-01 UTC**
    * **Description:** `repositoryId` will be removed.
    * **Reason:** Suggested topics are no longer supported
-   *
    */
   repositoryId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -5382,6 +5568,8 @@ export type DeploymentProtectionRuleEdge = {
 
 /** The possible protection rule types. */
 export enum DeploymentProtectionRuleType {
+  /** Branch policy */
+  BranchPolicy = 'BRANCH_POLICY',
   /** Required reviewers */
   RequiredReviewers = 'REQUIRED_REVIEWERS',
   /** Wait timer */
@@ -5897,7 +6085,11 @@ export type DiscussionComment = Comment & Deletable & Minimizable & Node & React
   isMinimized: Scalars['Boolean']['output'];
   /** The moment the editor made the last edit */
   lastEditedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+  /**
+   * Returns why the comment was minimized. One of `abuse`, `off-topic`,
+   * `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and
+   * formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+   */
   minimizedReason?: Maybe<Scalars['String']['output']>;
   /** Identifies when the comment was published at. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -6270,13 +6462,24 @@ export type EnablePullRequestAutoMergeInput = {
   authorEmail?: InputMaybe<Scalars['String']['input']>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Commit body to use for the commit when the PR is mergable; if omitted, a default message will be used. NOTE: when merging with a merge queue any input value for commit message is ignored. */
+  /**
+   * Commit body to use for the commit when the PR is mergable; if omitted, a
+   * default message will be used. NOTE: when merging with a merge queue any input
+   * value for commit message is ignored.
+   */
   commitBody?: InputMaybe<Scalars['String']['input']>;
-  /** Commit headline to use for the commit when the PR is mergable; if omitted, a default message will be used. NOTE: when merging with a merge queue any input value for commit headline is ignored. */
+  /**
+   * Commit headline to use for the commit when the PR is mergable; if omitted, a
+   * default message will be used. NOTE: when merging with a merge queue any input
+   * value for commit headline is ignored.
+   */
   commitHeadline?: InputMaybe<Scalars['String']['input']>;
   /** The expected head OID of the pull request. */
   expectedHeadOid?: InputMaybe<Scalars['GitObjectID']['input']>;
-  /** The merge method to use. If omitted, defaults to `MERGE`. NOTE: when merging with a merge queue any input value for merge method is ignored. */
+  /**
+   * The merge method to use. If omitted, defaults to `MERGE`. NOTE: when merging
+   * with a merge queue any input value for merge method is ignored.
+   */
   mergeMethod?: InputMaybe<PullRequestMergeMethod>;
   /** ID of the pull request to enable auto-merge on. */
   pullRequestId: Scalars['ID']['input'];
@@ -6319,6 +6522,8 @@ export type Enterprise = AnnouncementBanner & Node & {
   __typename?: 'Enterprise';
   /** The text of the announcement */
   announcement?: Maybe<Scalars['String']['output']>;
+  /** The date the announcement was created */
+  announcementCreatedAt?: Maybe<Scalars['DateTime']['output']>;
   /** The expiration date of the announcement, if any */
   announcementExpiresAt?: Maybe<Scalars['DateTime']['output']>;
   /** Whether the announcement can be dismissed by the user */
@@ -6347,7 +6552,10 @@ export type Enterprise = AnnouncementBanner & Node & {
   name: Scalars['String']['output'];
   /** A list of organizations that belong to this enterprise. */
   organizations: OrganizationConnection;
-  /** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+  /**
+   * Enterprise information visible to enterprise owners or enterprise owners'
+   * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+   */
   ownerInfo?: Maybe<EnterpriseOwnerInfo>;
   /** The HTTP path for this enterprise. */
   resourcePath: Scalars['URI']['output'];
@@ -6610,7 +6818,11 @@ export type EnterpriseFailedInvitationEdge = {
   node?: Maybe<OrganizationInvitation>;
 };
 
-/** An identity provider configured to provision identities for an enterprise. Visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * An identity provider configured to provision identities for an enterprise.
+ * Visible to enterprise owners or enterprise owners' personal access tokens
+ * (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseIdentityProvider = Node & {
   __typename?: 'EnterpriseIdentityProvider';
   /** The digest algorithm used to sign SAML requests for the identity provider. */
@@ -6634,7 +6846,11 @@ export type EnterpriseIdentityProvider = Node & {
 };
 
 
-/** An identity provider configured to provision identities for an enterprise. Visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * An identity provider configured to provision identities for an enterprise.
+ * Visible to enterprise owners or enterprise owners' personal access tokens
+ * (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseIdentityProviderExternalIdentitiesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6792,7 +7008,10 @@ export type EnterpriseOutsideCollaboratorEdgeRepositoriesArgs = {
   orderBy?: InputMaybe<RepositoryOrder>;
 };
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfo = {
   __typename?: 'EnterpriseOwnerInfo';
   /** A list of all of the administrators for this enterprise. */
@@ -6811,7 +7030,10 @@ export type EnterpriseOwnerInfo = {
   defaultRepositoryPermissionSetting: EnterpriseDefaultRepositoryPermissionSettingValue;
   /** A list of enterprise organizations configured with the provided base repository permission. */
   defaultRepositoryPermissionSettingOrganizations: OrganizationConnection;
-  /** A list of domains owned by the enterprise. Visible to enterprise owners or enterprise owners' personal access tokens (classic) with admin:enterprise scope. */
+  /**
+   * A list of domains owned by the enterprise. Visible to enterprise owners or
+   * enterprise owners' personal access tokens (classic) with admin:enterprise scope.
+   */
   domains: VerifiableDomainConnection;
   /** Enterprise Server installations owned by the enterprise. */
   enterpriseServerInstallations: EnterpriseServerInstallationConnection;
@@ -6819,7 +7041,11 @@ export type EnterpriseOwnerInfo = {
   failedInvitations: EnterpriseFailedInvitationConnection;
   /** The setting value for whether the enterprise has an IP allow list enabled. */
   ipAllowListEnabledSetting: IpAllowListEnabledSettingValue;
-  /** The IP addresses that are allowed to access resources owned by the enterprise. Visible to enterprise owners or enterprise owners' personal access tokens (classic) with admin:enterprise scope. */
+  /**
+   * The IP addresses that are allowed to access resources owned by the enterprise.
+   * Visible to enterprise owners or enterprise owners' personal access tokens
+   * (classic) with admin:enterprise scope.
+   */
   ipAllowListEntries: IpAllowListEntryConnection;
   /** The setting value for whether the enterprise has IP allow list configuration for installed GitHub Apps enabled. */
   ipAllowListForInstalledAppsEnabledSetting: IpAllowListForInstalledAppsEnabledSettingValue;
@@ -6827,7 +7053,10 @@ export type EnterpriseOwnerInfo = {
   isUpdatingDefaultRepositoryPermission: Scalars['Boolean']['output'];
   /** Whether the two-factor authentication requirement is currently being enforced. */
   isUpdatingTwoFactorRequirement: Scalars['Boolean']['output'];
-  /** The setting value for whether organization members with admin permissions on a repository can change repository visibility. */
+  /**
+   * The setting value for whether organization members with admin permissions on a
+   * repository can change repository visibility.
+   */
   membersCanChangeRepositoryVisibilitySetting: EnterpriseEnabledDisabledSettingValue;
   /** A list of enterprise organizations configured with the provided can change repository visibility setting value. */
   membersCanChangeRepositoryVisibilitySettingOrganizations: OrganizationConnection;
@@ -6900,7 +7129,10 @@ export type EnterpriseOwnerInfo = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoAdminsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6914,7 +7146,10 @@ export type EnterpriseOwnerInfoAdminsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoAffiliatedUsersWithTwoFactorDisabledArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6923,7 +7158,10 @@ export type EnterpriseOwnerInfoAffiliatedUsersWithTwoFactorDisabledArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoAllowPrivateRepositoryForkingSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6934,7 +7172,10 @@ export type EnterpriseOwnerInfoAllowPrivateRepositoryForkingSettingOrganizations
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoDefaultRepositoryPermissionSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6945,7 +7186,10 @@ export type EnterpriseOwnerInfoDefaultRepositoryPermissionSettingOrganizationsAr
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoDomainsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6957,7 +7201,10 @@ export type EnterpriseOwnerInfoDomainsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoEnterpriseServerInstallationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6968,7 +7215,10 @@ export type EnterpriseOwnerInfoEnterpriseServerInstallationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoFailedInvitationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6978,7 +7228,10 @@ export type EnterpriseOwnerInfoFailedInvitationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoIpAllowListEntriesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6988,7 +7241,10 @@ export type EnterpriseOwnerInfoIpAllowListEntriesArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoMembersCanChangeRepositoryVisibilitySettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -6999,7 +7255,10 @@ export type EnterpriseOwnerInfoMembersCanChangeRepositoryVisibilitySettingOrgani
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoMembersCanCreateRepositoriesSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7010,7 +7269,10 @@ export type EnterpriseOwnerInfoMembersCanCreateRepositoriesSettingOrganizationsA
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoMembersCanDeleteIssuesSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7021,7 +7283,10 @@ export type EnterpriseOwnerInfoMembersCanDeleteIssuesSettingOrganizationsArgs = 
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoMembersCanDeleteRepositoriesSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7032,7 +7297,10 @@ export type EnterpriseOwnerInfoMembersCanDeleteRepositoriesSettingOrganizationsA
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoMembersCanInviteCollaboratorsSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7043,7 +7311,10 @@ export type EnterpriseOwnerInfoMembersCanInviteCollaboratorsSettingOrganizations
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoMembersCanUpdateProtectedBranchesSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7054,7 +7325,10 @@ export type EnterpriseOwnerInfoMembersCanUpdateProtectedBranchesSettingOrganizat
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoMembersCanViewDependencyInsightsSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7065,7 +7339,10 @@ export type EnterpriseOwnerInfoMembersCanViewDependencyInsightsSettingOrganizati
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoOrganizationProjectsSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7076,7 +7353,10 @@ export type EnterpriseOwnerInfoOrganizationProjectsSettingOrganizationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoOutsideCollaboratorsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7091,7 +7371,10 @@ export type EnterpriseOwnerInfoOutsideCollaboratorsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoPendingAdminInvitationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7103,7 +7386,10 @@ export type EnterpriseOwnerInfoPendingAdminInvitationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoPendingCollaboratorInvitationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7114,7 +7400,10 @@ export type EnterpriseOwnerInfoPendingCollaboratorInvitationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoPendingMemberInvitationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7126,7 +7415,10 @@ export type EnterpriseOwnerInfoPendingMemberInvitationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoRepositoryProjectsSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7137,7 +7429,10 @@ export type EnterpriseOwnerInfoRepositoryProjectsSettingOrganizationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoSamlIdentityProviderSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7148,7 +7443,10 @@ export type EnterpriseOwnerInfoSamlIdentityProviderSettingOrganizationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoSupportEntitlementsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7158,7 +7456,10 @@ export type EnterpriseOwnerInfoSupportEntitlementsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoTeamDiscussionsSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7169,7 +7470,10 @@ export type EnterpriseOwnerInfoTeamDiscussionsSettingOrganizationsArgs = {
 };
 
 
-/** Enterprise information visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * Enterprise information visible to enterprise owners or enterprise owners'
+ * personal access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type EnterpriseOwnerInfoTwoFactorRequiredSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7599,7 +7903,10 @@ export enum EnterpriseUserAccountMembershipRole {
   Member = 'MEMBER',
   /** The user is an owner of an organization in the enterprise. */
   Owner = 'OWNER',
-  /** The user is not an owner of the enterprise, and not a member or owner of any organizations in the enterprise; only for EMU-enabled enterprises. */
+  /**
+   * The user is not an owner of the enterprise, and not a member or owner of any
+   * organizations in the enterprise; only for EMU-enabled enterprises.
+   */
   Unaffiliated = 'UNAFFILIATED'
 }
 
@@ -7618,8 +7925,14 @@ export type Environment = Node & {
   databaseId?: Maybe<Scalars['Int']['output']>;
   /** The Node ID of the Environment object */
   id: Scalars['ID']['output'];
+  /** Indicates whether or not this environment is currently pinned to the repository */
+  isPinned?: Maybe<Scalars['Boolean']['output']>;
+  /** The latest completed deployment with status success, failure, or error if it exists */
+  latestCompletedDeployment?: Maybe<Deployment>;
   /** The name of the environment */
   name: Scalars['String']['output'];
+  /** The position of the environment if it is pinned, null if it is not pinned */
+  pinnedPosition?: Maybe<Scalars['Int']['output']>;
   /** The protection rules defined for this environment */
   protectionRules: DeploymentProtectionRuleConnection;
 };
@@ -7661,6 +7974,16 @@ export enum EnvironmentOrderField {
   Name = 'NAME'
 }
 
+/** Properties by which environments connections can be ordered */
+export enum EnvironmentPinnedFilterField {
+  /** All environments will be returned. */
+  All = 'ALL',
+  /** Environments exclude pinned will be returned */
+  None = 'NONE',
+  /** Only pinned environment will be returned */
+  Only = 'ONLY'
+}
+
 /** Ordering options for environments */
 export type Environments = {
   /** The direction in which to order environments by the specified field. */
@@ -7669,7 +7992,15 @@ export type Environments = {
   field: EnvironmentOrderField;
 };
 
-/** An external identity provisioned by SAML SSO or SCIM. If SAML is configured on the organization, the external identity is visible to (1) organization owners, (2) organization owners' personal access tokens (classic) with read:org or admin:org scope, (3) GitHub App with an installation token with read or write access to members. If SAML is configured on the enterprise, the external identity is visible to (1) enterprise owners, (2) enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * An external identity provisioned by SAML SSO or SCIM. If SAML is configured on
+ * the organization, the external identity is visible to (1) organization owners,
+ * (2) organization owners' personal access tokens (classic) with read:org or
+ * admin:org scope, (3) GitHub App with an installation token with read or write
+ * access to members. If SAML is configured on the enterprise, the external
+ * identity is visible to (1) enterprise owners, (2) enterprise owners' personal
+ * access tokens (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type ExternalIdentity = Node & {
   __typename?: 'ExternalIdentity';
   /** The GUID for this identity */
@@ -7753,7 +8084,10 @@ export type ExternalIdentityScimAttributes = {
   username?: Maybe<Scalars['String']['output']>;
 };
 
-/** A command to add a file at the given path with the given contents as part of a commit.  Any existing file at that that path will be replaced. */
+/**
+ * A command to add a file at the given path with the given contents as part of a
+ * commit.  Any existing file at that that path will be replaced.
+ */
 export type FileAddition = {
   /** The base64 encoded contents of the file */
   contents: Scalars['Base64String']['input'];
@@ -7875,7 +8209,6 @@ export type FileAddition = {
  *            }
  *          ]
  *        }
- *
  */
 export type FileChanges = {
   /** File to add or change. */
@@ -7890,27 +8223,39 @@ export type FileDeletion = {
   path: Scalars['String']['input'];
 };
 
-/** Prevent commits that include files with specified file extensions from being pushed to the commit graph. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that include files with specified file extensions from being
+ * pushed to the commit graph. NOTE: This rule is in beta and subject to change
+ */
 export type FileExtensionRestrictionParameters = {
   __typename?: 'FileExtensionRestrictionParameters';
   /** The file extensions that are restricted from being pushed to the commit graph. */
   restrictedFileExtensions: Array<Scalars['String']['output']>;
 };
 
-/** Prevent commits that include files with specified file extensions from being pushed to the commit graph. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that include files with specified file extensions from being
+ * pushed to the commit graph. NOTE: This rule is in beta and subject to change
+ */
 export type FileExtensionRestrictionParametersInput = {
   /** The file extensions that are restricted from being pushed to the commit graph. */
   restrictedFileExtensions: Array<Scalars['String']['input']>;
 };
 
-/** Prevent commits that include changes in specified file paths from being pushed to the commit graph. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that include changes in specified file paths from being pushed
+ * to the commit graph. NOTE: This rule is in beta and subject to change
+ */
 export type FilePathRestrictionParameters = {
   __typename?: 'FilePathRestrictionParameters';
   /** The file paths that are restricted from being pushed to the commit graph. */
   restrictedFilePaths: Array<Scalars['String']['output']>;
 };
 
-/** Prevent commits that include changes in specified file paths from being pushed to the commit graph. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that include changes in specified file paths from being pushed
+ * to the commit graph. NOTE: This rule is in beta and subject to change
+ */
 export type FilePathRestrictionParametersInput = {
   /** The file paths that are restricted from being pushed to the commit graph. */
   restrictedFilePaths: Array<Scalars['String']['input']>;
@@ -8059,10 +8404,7 @@ export type Gist = Node & Starrable & UniformResourceLocatable & {
   pushedAt?: Maybe<Scalars['DateTime']['output']>;
   /** The HTML path to this resource. */
   resourcePath: Scalars['URI']['output'];
-  /**
-   * Returns a count of how many stargazers there are on this object
-   *
-   */
+  /** Returns a count of how many stargazers there are on this object */
   stargazerCount: Scalars['Int']['output'];
   /** A list of users who have starred this starrable. */
   stargazers: StargazerConnection;
@@ -8141,7 +8483,11 @@ export type GistComment = Comment & Deletable & Minimizable & Node & Updatable &
   isMinimized: Scalars['Boolean']['output'];
   /** The moment the editor made the last edit */
   lastEditedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+  /**
+   * Returns why the comment was minimized. One of `abuse`, `off-topic`,
+   * `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and
+   * formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+   */
   minimizedReason?: Maybe<Scalars['String']['output']>;
   /** Identifies when the comment was published at. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -8361,7 +8707,10 @@ export type GitSignature = {
   signature: Scalars['String']['output'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<User>;
-  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
+  /**
+   * The state of this signature. `VALID` if signature is valid and verified by
+   * GitHub, otherwise represents reason why signature is considered invalid.
+   */
   state: GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean']['output'];
@@ -8420,7 +8769,10 @@ export type GpgSignature = GitSignature & {
   signature: Scalars['String']['output'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<User>;
-  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
+  /**
+   * The state of this signature. `VALID` if signature is valid and verified by
+   * GitHub, otherwise represents reason why signature is considered invalid.
+   */
   state: GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean']['output'];
@@ -9000,14 +9352,17 @@ export type IssueComment = Comment & Deletable & Minimizable & Node & Reactable 
   issue: Issue;
   /** The moment the editor made the last edit */
   lastEditedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+  /**
+   * Returns why the comment was minimized. One of `abuse`, `off-topic`,
+   * `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and
+   * formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+   */
   minimizedReason?: Maybe<Scalars['String']['output']>;
   /** Identifies when the comment was published at. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   /**
    * Returns the pull request associated with the comment, if this comment was made on a
    * pull request.
-   *
    */
   pullRequest?: Maybe<PullRequest>;
   /** A list of reactions grouped by content left on the subject. */
@@ -9137,7 +9492,10 @@ export type IssueEdge = {
 
 /** Ways in which to filter lists of issues. */
 export type IssueFilters = {
-  /** List issues assigned to given name. Pass in `null` for issues with no assigned user, and `*` for issues assigned to any user. */
+  /**
+   * List issues assigned to given name. Pass in `null` for issues with no assigned
+   * user, and `*` for issues assigned to any user.
+   */
   assignee?: InputMaybe<Scalars['String']['input']>;
   /** List issues created by given name. */
   createdBy?: InputMaybe<Scalars['String']['input']>;
@@ -9145,9 +9503,17 @@ export type IssueFilters = {
   labels?: InputMaybe<Array<Scalars['String']['input']>>;
   /** List issues where the given name is mentioned in the issue. */
   mentioned?: InputMaybe<Scalars['String']['input']>;
-  /** List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its database ID. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone. */
+  /**
+   * List issues by given milestone argument. If an string representation of an
+   * integer is passed, it should refer to a milestone by its database ID. Pass in
+   * `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
+   */
   milestone?: InputMaybe<Scalars['String']['input']>;
-  /** List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its number field. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone. */
+  /**
+   * List issues by given milestone argument. If an string representation of an
+   * integer is passed, it should refer to a milestone by its number field. Pass in
+   * `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
+   */
   milestoneNumber?: InputMaybe<Scalars['String']['input']>;
   /** List issues that have been updated at or after the given date. */
   since?: InputMaybe<Scalars['DateTime']['input']>;
@@ -9363,7 +9729,6 @@ export type JoinedGitHubContribution = Contribution & {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** When this contribution was made. */
@@ -9372,10 +9737,7 @@ export type JoinedGitHubContribution = Contribution & {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -9982,7 +10344,10 @@ export type MarketplaceListing = Node & {
   installedForViewer: Scalars['Boolean']['output'];
   /** Whether this listing has been removed from the Marketplace. */
   isArchived: Scalars['Boolean']['output'];
-  /** Whether this listing is still an editable draft that has not been submitted for review and is not publicly visible in the Marketplace. */
+  /**
+   * Whether this listing is still an editable draft that has not been submitted
+   * for review and is not publicly visible in the Marketplace.
+   */
   isDraft: Scalars['Boolean']['output'];
   /** Whether the product this listing represents is available as part of a paid plan. */
   isPaid: Scalars['Boolean']['output'];
@@ -10028,7 +10393,10 @@ export type MarketplaceListing = Node & {
   statusUrl?: Maybe<Scalars['URI']['output']>;
   /** An email address for support for this listing's app. */
   supportEmail?: Maybe<Scalars['String']['output']>;
-  /** Either a URL or an email address for support for this listing's app, may return an empty string for listings that do not require a support URL. */
+  /**
+   * Either a URL or an email address for support for this listing's app, may
+   * return an empty string for listings that do not require a support URL.
+   */
   supportUrl: Scalars['URI']['output'];
   /** URL to the listing's terms of service. */
   termsOfServiceUrl?: Maybe<Scalars['URI']['output']>;
@@ -10045,7 +10413,6 @@ export type MarketplaceListing = Node & {
   /**
    * Can the current viewer edit the primary and secondary category of this
    * Marketplace listing.
-   *
    */
   viewerCanEditCategories: Scalars['Boolean']['output'];
   /** Can the current viewer edit the plans for this Marketplace listing. */
@@ -10053,36 +10420,26 @@ export type MarketplaceListing = Node & {
   /**
    * Can the current viewer return this Marketplace listing to draft state
    * so it becomes editable again.
-   *
    */
   viewerCanRedraft: Scalars['Boolean']['output'];
   /**
    * Can the current viewer reject this Marketplace listing by returning it to
    * an editable draft state or rejecting it entirely.
-   *
    */
   viewerCanReject: Scalars['Boolean']['output'];
   /**
    * Can the current viewer request this listing be reviewed for display in
    * the Marketplace as verified.
-   *
    */
   viewerCanRequestApproval: Scalars['Boolean']['output'];
-  /**
-   * Indicates whether the current user has an active subscription to this Marketplace listing.
-   *
-   */
+  /** Indicates whether the current user has an active subscription to this Marketplace listing. */
   viewerHasPurchased: Scalars['Boolean']['output'];
   /**
    * Indicates if the current user has purchased a subscription to this Marketplace listing
    * for all of the organizations the user owns.
-   *
    */
   viewerHasPurchasedForAllOrganizations: Scalars['Boolean']['output'];
-  /**
-   * Does the current viewer role allow them to administer this Marketplace listing.
-   *
-   */
+  /** Does the current viewer role allow them to administer this Marketplace listing. */
   viewerIsListingAdmin: Scalars['Boolean']['output'];
 };
 
@@ -10114,27 +10471,39 @@ export type MarketplaceListingEdge = {
   node?: Maybe<MarketplaceListing>;
 };
 
-/** Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that include file paths that exceed a specified character limit
+ * from being pushed to the commit graph. NOTE: This rule is in beta and subject to change
+ */
 export type MaxFilePathLengthParameters = {
   __typename?: 'MaxFilePathLengthParameters';
   /** The maximum amount of characters allowed in file paths */
   maxFilePathLength: Scalars['Int']['output'];
 };
 
-/** Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that include file paths that exceed a specified character limit
+ * from being pushed to the commit graph. NOTE: This rule is in beta and subject to change
+ */
 export type MaxFilePathLengthParametersInput = {
   /** The maximum amount of characters allowed in file paths */
   maxFilePathLength: Scalars['Int']['input'];
 };
 
-/** Prevent commits that exceed a specified file size limit from being pushed to the commit. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that exceed a specified file size limit from being pushed to the
+ * commit. NOTE: This rule is in beta and subject to change
+ */
 export type MaxFileSizeParameters = {
   __typename?: 'MaxFileSizeParameters';
   /** The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
   maxFileSize: Scalars['Int']['output'];
 };
 
-/** Prevent commits that exceed a specified file size limit from being pushed to the commit. NOTE: This rule is in beta and subject to change */
+/**
+ * Prevent commits that exceed a specified file size limit from being pushed to the
+ * commit. NOTE: This rule is in beta and subject to change
+ */
 export type MaxFileSizeParametersInput = {
   /** The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
   maxFileSize: Scalars['Int']['input'];
@@ -10143,7 +10512,7 @@ export type MaxFileSizeParametersInput = {
 /** Represents a member feature request notification */
 export type MemberFeatureRequestNotification = Node & {
   __typename?: 'MemberFeatureRequestNotification';
-  /** Represents member feature request body containing organization name and the number of feature requests */
+  /** Represents member feature request body containing entity name and the number of feature requests */
   body: Scalars['String']['output'];
   /** The Node ID of the MemberFeatureRequestNotification object */
   id: Scalars['ID']['output'];
@@ -10438,7 +10807,10 @@ export type MergeQueueConfiguration = {
   mergingStrategy?: Maybe<MergeQueueMergingStrategy>;
   /** The minimum number of entries required to merge at once. */
   minimumEntriesToMerge?: Maybe<Scalars['Int']['output']>;
-  /** The amount of time in minutes to wait before ignoring the minumum number of entries in the queue requirement and merging a collection of entries */
+  /**
+   * The amount of time in minutes to wait before ignoring the minumum number of
+   * entries in the queue requirement and merging a collection of entries
+   */
   minimumEntriesToMergeWaitTime?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -10593,7 +10965,10 @@ export type Migration = {
   sourceUrl: Scalars['URI']['output'];
   /** The migration state. */
   state: MigrationState;
-  /** The number of warnings encountered for this migration. To review the warnings, check the [Migration Log](https://docs.github.com/migrations/using-github-enterprise-importer/completing-your-migration-with-github-enterprise-importer/accessing-your-migration-logs-for-github-enterprise-importer). */
+  /**
+   * The number of warnings encountered for this migration. To review the warnings,
+   * check the [Migration Log](https://docs.github.com/migrations/using-github-enterprise-importer/completing-your-migration-with-github-enterprise-importer/accessing-your-migration-logs-for-github-enterprise-importer).
+   */
   warningsCount: Scalars['Int']['output'];
 };
 
@@ -10780,7 +11155,11 @@ export type MilestonedEvent = Node & {
 export type Minimizable = {
   /** Returns whether or not a comment has been minimized. */
   isMinimized: Scalars['Boolean']['output'];
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+  /**
+   * Returns why the comment was minimized. One of `abuse`, `off-topic`,
+   * `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and
+   * formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+   */
   minimizedReason?: Maybe<Scalars['String']['output']>;
   /** Check if the current viewer can minimize this object. */
   viewerCanMinimize: Scalars['Boolean']['output'];
@@ -10931,7 +11310,11 @@ export type Mutation = {
   changeUserStatus?: Maybe<ChangeUserStatusPayload>;
   /** Clears all labels from a labelable object. */
   clearLabelsFromLabelable?: Maybe<ClearLabelsFromLabelablePayload>;
-  /** This mutation clears the value of a field for an item in a Project. Currently only text, number, date, assignees, labels, single-select, iteration and milestone fields are supported. */
+  /**
+   * This mutation clears the value of a field for an item in a Project. Currently
+   * only text, number, date, assignees, labels, single-select, iteration and
+   * milestone fields are supported.
+   */
   clearProjectV2ItemFieldValue?: Maybe<ClearProjectV2ItemFieldValuePayload>;
   /** Creates a new project by cloning configuration from an existing project. */
   cloneProject?: Maybe<CloneProjectPayload>;
@@ -11000,7 +11383,6 @@ export type Mutation = {
    *
    * Commits made using this mutation are automatically signed by GitHub if
    * supported and will be marked as verified in the user interface.
-   *
    */
   createCommitOnBranch?: Maybe<CreateCommitOnBranchPayload>;
   /** Creates a new deployment event. */
@@ -11009,7 +11391,14 @@ export type Mutation = {
   createDeploymentStatus?: Maybe<CreateDeploymentStatusPayload>;
   /** Create a discussion. */
   createDiscussion?: Maybe<CreateDiscussionPayload>;
-  /** Creates an organization as part of an enterprise account. A personal access token used to create an organization is implicitly permitted to update the organization it created, if the organization is part of an enterprise that has SAML enabled or uses Enterprise Managed Users. If the organization is not part of such an enterprise, and instead has SAML enabled for it individually, the token will then require SAML authorization to continue working against that organization. */
+  /**
+   * Creates an organization as part of an enterprise account. A personal access
+   * token used to create an organization is implicitly permitted to update the
+   * organization it created, if the organization is part of an enterprise that has
+   * SAML enabled or uses Enterprise Managed Users. If the organization is not part
+   * of such an enterprise, and instead has SAML enabled for it individually, the
+   * token will then require SAML authorization to continue working against that organization.
+   */
   createEnterpriseOrganization?: Maybe<CreateEnterpriseOrganizationPayload>;
   /** Creates an environment or simply returns it if already exists. */
   createEnvironment?: Maybe<CreateEnvironmentPayload>;
@@ -11043,7 +11432,10 @@ export type Mutation = {
   createSponsorsTier?: Maybe<CreateSponsorsTierPayload>;
   /** Start a new sponsorship of a maintainer in GitHub Sponsors, or reactivate a past sponsorship. */
   createSponsorship?: Maybe<CreateSponsorshipPayload>;
-  /** Make many sponsorships for different sponsorable users or organizations at once. Can only sponsor those who have a public GitHub Sponsors profile. */
+  /**
+   * Make many sponsorships for different sponsorable users or organizations at
+   * once. Can only sponsor those who have a public GitHub Sponsors profile.
+   */
   createSponsorships?: Maybe<CreateSponsorshipsPayload>;
   /** Creates a new team discussion. */
   createTeamDiscussion?: Maybe<CreateTeamDiscussionPayload>;
@@ -11157,6 +11549,8 @@ export type Mutation = {
   moveProjectCard?: Maybe<MoveProjectCardPayload>;
   /** Moves a project column to another place. */
   moveProjectColumn?: Maybe<MoveProjectColumnPayload>;
+  /** Pin an environment to a repository */
+  pinEnvironment?: Maybe<PinEnvironmentPayload>;
   /** Pin an issue to a repository */
   pinIssue?: Maybe<PinIssuePayload>;
   /** Publish an existing sponsorship tier that is currently still a draft to a GitHub Sponsors profile. */
@@ -11171,7 +11565,10 @@ export type Mutation = {
   removeAssigneesFromAssignable?: Maybe<RemoveAssigneesFromAssignablePayload>;
   /** Removes an administrator from the enterprise. */
   removeEnterpriseAdmin?: Maybe<RemoveEnterpriseAdminPayload>;
-  /** Removes the identity provider from an enterprise. Owners of enterprises both with and without Enterprise Managed Users may use this mutation. */
+  /**
+   * Removes the identity provider from an enterprise. Owners of enterprises both
+   * with and without Enterprise Managed Users may use this mutation.
+   */
   removeEnterpriseIdentityProvider?: Maybe<RemoveEnterpriseIdentityProviderPayload>;
   /** Removes a user from all organizations within the enterprise */
   removeEnterpriseMember?: Maybe<RemoveEnterpriseMemberPayload>;
@@ -11195,6 +11592,8 @@ export type Mutation = {
   reopenIssue?: Maybe<ReopenIssuePayload>;
   /** Reopen a pull request. */
   reopenPullRequest?: Maybe<ReopenPullRequestPayload>;
+  /** Reorder a pinned repository environment */
+  reorderEnvironment?: Maybe<ReorderEnvironmentPayload>;
   /** Set review requests on a pull request. */
   requestReviews?: Maybe<RequestReviewsPayload>;
   /** Rerequests an existing check suite. */
@@ -11323,7 +11722,12 @@ export type Mutation = {
   updateOrganizationAllowPrivateRepositoryForkingSetting?: Maybe<UpdateOrganizationAllowPrivateRepositoryForkingSettingPayload>;
   /** Sets whether contributors are required to sign off on web-based commits for repositories in an organization. */
   updateOrganizationWebCommitSignoffSetting?: Maybe<UpdateOrganizationWebCommitSignoffSettingPayload>;
-  /** Toggle the setting for your GitHub Sponsors profile that allows other GitHub accounts to sponsor you on GitHub while paying for the sponsorship on Patreon. Only applicable when you have a GitHub Sponsors profile and have connected your GitHub account with Patreon. */
+  /**
+   * Toggle the setting for your GitHub Sponsors profile that allows other GitHub
+   * accounts to sponsor you on GitHub while paying for the sponsorship on Patreon.
+   * Only applicable when you have a GitHub Sponsors profile and have connected
+   * your GitHub account with Patreon.
+   */
   updatePatreonSponsorability?: Maybe<UpdatePatreonSponsorabilityPayload>;
   /** Updates an existing project. */
   updateProject?: Maybe<UpdateProjectPayload>;
@@ -11337,7 +11741,10 @@ export type Mutation = {
   updateProjectV2Collaborators?: Maybe<UpdateProjectV2CollaboratorsPayload>;
   /** Updates a draft issue within a Project. */
   updateProjectV2DraftIssue?: Maybe<UpdateProjectV2DraftIssuePayload>;
-  /** This mutation updates the value of a field for an item in a Project. Currently only single-select, text, number, date, and iteration fields are supported. */
+  /**
+   * This mutation updates the value of a field for an item in a Project. Currently
+   * only single-select, text, number, date, and iteration fields are supported.
+   */
   updateProjectV2ItemFieldValue?: Maybe<UpdateProjectV2ItemFieldValuePayload>;
   /** This mutation updates the position of the item in the project, where the position represents the priority of an item. */
   updateProjectV2ItemPosition?: Maybe<UpdateProjectV2ItemPositionPayload>;
@@ -11370,7 +11777,6 @@ export type Mutation = {
    *
    * If `RefUpdate.force` is set to `true`, a non-fast-forward updates
    * for the given reference will be allowed.
-   *
    */
   updateRefs?: Maybe<UpdateRefsPayload>;
   /** Update information about a repository. */
@@ -12135,6 +12541,12 @@ export type MutationMoveProjectColumnArgs = {
 
 
 /** The root query for implementing GraphQL mutations. */
+export type MutationPinEnvironmentArgs = {
+  input: PinEnvironmentInput;
+};
+
+
+/** The root query for implementing GraphQL mutations. */
 export type MutationPinIssueArgs = {
   input: PinIssueInput;
 };
@@ -12245,6 +12657,12 @@ export type MutationReopenIssueArgs = {
 /** The root query for implementing GraphQL mutations. */
 export type MutationReopenPullRequestArgs = {
   input: ReopenPullRequestInput;
+};
+
+
+/** The root query for implementing GraphQL mutations. */
+export type MutationReorderEnvironmentArgs = {
+  input: ReorderEnvironmentInput;
 };
 
 
@@ -12813,7 +13231,11 @@ export enum NotificationRestrictionSettingValue {
   Enabled = 'ENABLED'
 }
 
-/** An OIDC identity provider configured to provision identities for an enterprise. Visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * An OIDC identity provider configured to provision identities for an enterprise.
+ * Visible to enterprise owners or enterprise owners' personal access tokens
+ * (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type OidcProvider = Node & {
   __typename?: 'OIDCProvider';
   /** The enterprise this identity provider belongs to. */
@@ -12829,7 +13251,11 @@ export type OidcProvider = Node & {
 };
 
 
-/** An OIDC identity provider configured to provision identities for an enterprise. Visible to enterprise owners or enterprise owners' personal access tokens (classic) with read:enterprise or admin:enterprise scope. */
+/**
+ * An OIDC identity provider configured to provision identities for an enterprise.
+ * Visible to enterprise owners or enterprise owners' personal access tokens
+ * (classic) with read:enterprise or admin:enterprise scope.
+ */
 export type OidcProviderExternalIdentitiesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -13932,17 +14358,29 @@ export type OrgRemoveMemberAuditEntry = AuditEntry & Node & OrganizationAuditEnt
 
 /** The type of membership a user has with an Organization. */
 export enum OrgRemoveMemberAuditEntryMembershipType {
-  /** Organization owners have full access and can change several settings, including the names of repositories that belong to the Organization and Owners team membership. In addition, organization owners can delete the organization and all of its repositories. */
+  /**
+   * Organization owners have full access and can change several settings,
+   * including the names of repositories that belong to the Organization and Owners
+   * team membership. In addition, organization owners can delete the organization
+   * and all of its repositories.
+   */
   Admin = 'ADMIN',
   /** A billing manager is a user who manages the billing settings for the Organization, such as updating payment information. */
   BillingManager = 'BILLING_MANAGER',
   /** A direct member is a user that is a member of the Organization. */
   DirectMember = 'DIRECT_MEMBER',
-  /** An outside collaborator is a person who isn't explicitly a member of the Organization, but who has Read, Write, or Admin permissions to one or more repositories in the organization. */
+  /**
+   * An outside collaborator is a person who isn't explicitly a member of the
+   * Organization, but who has Read, Write, or Admin permissions to one or more
+   * repositories in the organization.
+   */
   OutsideCollaborator = 'OUTSIDE_COLLABORATOR',
   /** A suspended member. */
   Suspended = 'SUSPENDED',
-  /** An unaffiliated collaborator is a person who is not a member of the Organization and does not have access to any repositories in the Organization. */
+  /**
+   * An unaffiliated collaborator is a person who is not a member of the
+   * Organization and does not have access to any repositories in the Organization.
+   */
   Unaffiliated = 'UNAFFILIATED'
 }
 
@@ -14009,9 +14447,16 @@ export type OrgRemoveOutsideCollaboratorAuditEntry = AuditEntry & Node & Organiz
 export enum OrgRemoveOutsideCollaboratorAuditEntryMembershipType {
   /** A billing manager is a user who manages the billing settings for the Organization, such as updating payment information. */
   BillingManager = 'BILLING_MANAGER',
-  /** An outside collaborator is a person who isn't explicitly a member of the Organization, but who has Read, Write, or Admin permissions to one or more repositories in the organization. */
+  /**
+   * An outside collaborator is a person who isn't explicitly a member of the
+   * Organization, but who has Read, Write, or Admin permissions to one or more
+   * repositories in the organization.
+   */
   OutsideCollaborator = 'OUTSIDE_COLLABORATOR',
-  /** An unaffiliated collaborator is a person who is not a member of the Organization and does not have access to any repositories in the organization. */
+  /**
+   * An unaffiliated collaborator is a person who is not a member of the
+   * Organization and does not have access to any repositories in the organization.
+   */
   Unaffiliated = 'UNAFFILIATED'
 }
 
@@ -14392,6 +14837,8 @@ export type Organization = Actor & AnnouncementBanner & MemberStatusable & Node 
   __typename?: 'Organization';
   /** The text of the announcement */
   announcement?: Maybe<Scalars['String']['output']>;
+  /** The date the announcement was created */
+  announcementCreatedAt?: Maybe<Scalars['DateTime']['output']>;
   /** The expiration date of the announcement, if any */
   announcementExpiresAt?: Maybe<Scalars['DateTime']['output']>;
   /** Whether the announcement can be dismissed by the user */
@@ -14438,9 +14885,15 @@ export type Organization = Actor & AnnouncementBanner & MemberStatusable & Node 
   isSponsoringViewer: Scalars['Boolean']['output'];
   /** Whether the organization has verified its profile email and website. */
   isVerified: Scalars['Boolean']['output'];
-  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
+  /**
+   * Showcases a selection of repositories and gists that the profile owner has
+   * either curated or that have been selected automatically based on popularity.
+   */
   itemShowcase: ProfileItemShowcase;
-  /** Calculate how much each sponsor has ever paid total to this maintainer via GitHub Sponsors. Does not include sponsorships paid via Patreon. */
+  /**
+   * Calculate how much each sponsor has ever paid total to this maintainer via
+   * GitHub Sponsors. Does not include sponsorships paid via Patreon.
+   */
   lifetimeReceivedSponsorshipValues: SponsorAndLifetimeValueConnection;
   /** The organization's public profile location. */
   location?: Maybe<Scalars['String']['output']>;
@@ -14500,7 +14953,10 @@ export type Organization = Actor & AnnouncementBanner & MemberStatusable & Node 
   repositoryDiscussions: DiscussionConnection;
   /** A list of all repository migrations for this organization. */
   repositoryMigrations: RepositoryMigrationConnection;
-  /** When true the organization requires all members, billing managers, and outside collaborators to enable two-factor authentication. */
+  /**
+   * When true the organization requires all members, billing managers, and outside
+   * collaborators to enable two-factor authentication.
+   */
   requiresTwoFactorAuthentication?: Maybe<Scalars['Boolean']['output']>;
   /** The HTTP path for this organization. */
   resourcePath: Scalars['URI']['output'];
@@ -14508,7 +14964,12 @@ export type Organization = Actor & AnnouncementBanner & MemberStatusable & Node 
   ruleset?: Maybe<RepositoryRuleset>;
   /** A list of rulesets for this organization. */
   rulesets?: Maybe<RepositoryRulesetConnection>;
-  /** The Organization's SAML identity provider. Visible to (1) organization owners, (2) organization owners' personal access tokens (classic) with read:org or admin:org scope, (3) GitHub App with an installation token with read or write access to members. */
+  /**
+   * The Organization's SAML identity provider. Visible to (1) organization owners,
+   * (2) organization owners' personal access tokens (classic) with read:org or
+   * admin:org scope, (3) GitHub App with an installation token with read or write
+   * access to members.
+   */
   samlIdentityProvider?: Maybe<OrganizationIdentityProvider>;
   /** List of users and organizations this entity is sponsoring. */
   sponsoring: SponsorConnection;
@@ -14536,7 +14997,11 @@ export type Organization = Actor & AnnouncementBanner & MemberStatusable & Node 
   teamsResourcePath: Scalars['URI']['output'];
   /** The HTTP URL listing organization's teams */
   teamsUrl: Scalars['URI']['output'];
-  /** The amount in United States cents (e.g., 500 = $5.00 USD) that this entity has spent on GitHub to fund sponsorships. Only returns a value when viewed by the user themselves or by a user who can manage sponsorships for the requested organization. */
+  /**
+   * The amount in United States cents (e.g., 500 = $5.00 USD) that this entity has
+   * spent on GitHub to fund sponsorships. Only returns a value when viewed by the
+   * user themselves or by a user who can manage sponsorships for the requested organization.
+   */
   totalSponsorshipAmountAsSponsorInCents?: Maybe<Scalars['Int']['output']>;
   /** The organization's Twitter username. */
   twitterUsername?: Maybe<Scalars['String']['output']>;
@@ -15031,7 +15496,12 @@ export type OrganizationEnterpriseOwnerEdge = {
   organizationRole: RoleInOrganization;
 };
 
-/** An Identity Provider configured to provision SAML and SCIM identities for Organizations. Visible to (1) organization owners, (2) organization owners' personal access tokens (classic) with read:org or admin:org scope, (3) GitHub App with an installation token with read or write access to members. */
+/**
+ * An Identity Provider configured to provision SAML and SCIM identities for
+ * Organizations. Visible to (1) organization owners, (2) organization owners'
+ * personal access tokens (classic) with read:org or admin:org scope, (3) GitHub
+ * App with an installation token with read or write access to members.
+ */
 export type OrganizationIdentityProvider = Node & {
   __typename?: 'OrganizationIdentityProvider';
   /** The digest algorithm used to sign SAML requests for the Identity Provider. */
@@ -15053,7 +15523,12 @@ export type OrganizationIdentityProvider = Node & {
 };
 
 
-/** An Identity Provider configured to provision SAML and SCIM identities for Organizations. Visible to (1) organization owners, (2) organization owners' personal access tokens (classic) with read:org or admin:org scope, (3) GitHub App with an installation token with read or write access to members. */
+/**
+ * An Identity Provider configured to provision SAML and SCIM identities for
+ * Organizations. Visible to (1) organization owners, (2) organization owners'
+ * personal access tokens (classic) with read:org or admin:org scope, (3) GitHub
+ * App with an installation token with read or write access to members.
+ */
 export type OrganizationIdentityProviderExternalIdentitiesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -15634,6 +16109,27 @@ export type PermissionSource = {
   source: PermissionGranter;
 };
 
+/** Autogenerated input type of PinEnvironment */
+export type PinEnvironmentInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the environment to modify */
+  environmentId: Scalars['ID']['input'];
+  /** The desired state of the environment. If true, environment will be pinned. If false, it will be unpinned. */
+  pinned: Scalars['Boolean']['input'];
+};
+
+/** Autogenerated return type of PinEnvironment */
+export type PinEnvironmentPayload = {
+  __typename?: 'PinEnvironmentPayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The environment that was pinned */
+  environment?: Maybe<Environment>;
+  /** The pinned environment if we pinned */
+  pinnedEnvironment?: Maybe<PinnedEnvironment>;
+};
+
 /** Autogenerated input type of PinIssue */
 export type PinIssueInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -15771,6 +16267,59 @@ export enum PinnedDiscussionPattern {
   Plus = 'PLUS',
   /** A lightning bolt pattern */
   Zap = 'ZAP'
+}
+
+/** Represents a pinned environment on a given repository */
+export type PinnedEnvironment = Node & {
+  __typename?: 'PinnedEnvironment';
+  /** Identifies the date and time when the pinned environment was created */
+  createdAt: Scalars['DateTime']['output'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']['output']>;
+  /** Identifies the environment associated. */
+  environment: Environment;
+  /** The Node ID of the PinnedEnvironment object */
+  id: Scalars['ID']['output'];
+  /** Identifies the position of the pinned environment. */
+  position: Scalars['Int']['output'];
+  /** The repository that this environment was pinned to. */
+  repository: Repository;
+};
+
+/** The connection type for PinnedEnvironment. */
+export type PinnedEnvironmentConnection = {
+  __typename?: 'PinnedEnvironmentConnection';
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<PinnedEnvironmentEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<PinnedEnvironment>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int']['output'];
+};
+
+/** An edge in a connection. */
+export type PinnedEnvironmentEdge = {
+  __typename?: 'PinnedEnvironmentEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node?: Maybe<PinnedEnvironment>;
+};
+
+/** Ordering options for pinned environments */
+export type PinnedEnvironmentOrder = {
+  /** The direction in which to order pinned environments by the specified field. */
+  direction: OrderDirection;
+  /** The field to order pinned environments by. */
+  field: PinnedEnvironmentOrderField;
+};
+
+/** Properties by which pinned environments connections can be ordered */
+export enum PinnedEnvironmentOrderField {
+  /** Order pinned environments by position */
+  Position = 'POSITION'
 }
 
 /** Represents a 'pinned' event on a given issue or pull request. */
@@ -15935,17 +16484,27 @@ export type PrivateRepositoryForkingEnableAuditEntry = AuditEntry & EnterpriseAu
   userUrl?: Maybe<Scalars['URI']['output']>;
 };
 
-/** A curatable list of repositories relating to a repository owner, which defaults to showing the most popular repositories they own. */
+/**
+ * A curatable list of repositories relating to a repository owner, which defaults
+ * to showing the most popular repositories they own.
+ */
 export type ProfileItemShowcase = {
   __typename?: 'ProfileItemShowcase';
   /** Whether or not the owner has pinned any repositories or gists. */
   hasPinnedItems: Scalars['Boolean']['output'];
-  /** The repositories and gists in the showcase. If the profile owner has any pinned items, those will be returned. Otherwise, the profile owner's popular repositories will be returned. */
+  /**
+   * The repositories and gists in the showcase. If the profile owner has any
+   * pinned items, those will be returned. Otherwise, the profile owner's popular
+   * repositories will be returned.
+   */
   items: PinnableItemConnection;
 };
 
 
-/** A curatable list of repositories relating to a repository owner, which defaults to showing the most popular repositories they own. */
+/**
+ * A curatable list of repositories relating to a repository owner, which defaults
+ * to showing the most popular repositories they own.
+ */
 export type ProfileItemShowcaseItemsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -15961,7 +16520,10 @@ export type ProfileOwner = {
   email?: Maybe<Scalars['String']['output']>;
   /** The Node ID of the ProfileOwner object */
   id: Scalars['ID']['output'];
-  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
+  /**
+   * Showcases a selection of repositories and gists that the profile owner has
+   * either curated or that have been selected automatically based on popularity.
+   */
   itemShowcase: ProfileItemShowcase;
   /** The public profile location. */
   location?: Maybe<Scalars['String']['output']>;
@@ -16081,7 +16643,6 @@ export type ProjectCard = Node & {
    * project column at a time. The column field will be null if the card is created
    * in a pending state and has yet to be associated with a column. Once cards are
    * associated with a column, they will not become pending in the future.
-   *
    */
   column?: Maybe<ProjectColumn>;
   /** The card content item */
@@ -17611,7 +18172,10 @@ export type PublicKey = Node & {
   __typename?: 'PublicKey';
   /** The last time this authorization was used to perform an action. Values will be null for keys not owned by the user. */
   accessedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Identifies the date and time when the key was created. Keys created before March 5th, 2014 have inaccurate values. Values will be null for keys not owned by the user. */
+  /**
+   * Identifies the date and time when the key was created. Keys created before
+   * March 5th, 2014 have inaccurate values. Values will be null for keys not owned by the user.
+   */
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   /** The fingerprint for this PublicKey. */
   fingerprint: Scalars['String']['output'];
@@ -17621,7 +18185,11 @@ export type PublicKey = Node & {
   isReadOnly?: Maybe<Scalars['Boolean']['output']>;
   /** The public key string. */
   key: Scalars['String']['output'];
-  /** Identifies the date and time when the key was updated. Keys created before March 5th, 2014 may have inaccurate values. Values will be null for keys not owned by the user. */
+  /**
+   * Identifies the date and time when the key was updated. Keys created before
+   * March 5th, 2014 may have inaccurate values. Values will be null for keys not
+   * owned by the user.
+   */
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
@@ -17790,7 +18358,12 @@ export type PullRequest = Assignable & Closable & Comment & Labelable & Lockable
   participants: UserConnection;
   /** The permalink to the pull request. */
   permalink: Scalars['URI']['output'];
-  /** The commit that GitHub automatically generated to test if this pull request could be merged. This field will not return a value if the pull request is merged, or if the test merge commit is still being generated. See the `mergeable` field for more details on the mergeability of the pull request. */
+  /**
+   * The commit that GitHub automatically generated to test if this pull request
+   * could be merged. This field will not return a value if the pull request is
+   * merged, or if the test merge commit is still being generated. See the
+   * `mergeable` field for more details on the mergeability of the pull request.
+   */
   potentialMergeCommit?: Maybe<Commit>;
   /** List of project cards associated with this pull request. */
   projectCards: ProjectCardConnection;
@@ -17872,7 +18445,6 @@ export type PullRequest = Assignable & Closable & Comment & Labelable & Lockable
   /**
    * Whether or not the viewer can update the head ref of this PR, by merging or rebasing the base ref.
    * If the head ref is up to date or unable to be updated by this user, this will return false.
-   *
    */
   viewerCanUpdateBranch: Scalars['Boolean']['output'];
   /** Reasons why the current viewer can not update this comment. */
@@ -18349,7 +18921,11 @@ export type PullRequestReview = Comment & Deletable & Minimizable & Node & React
   isMinimized: Scalars['Boolean']['output'];
   /** The moment the editor made the last edit */
   lastEditedAt?: Maybe<Scalars['DateTime']['output']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+  /**
+   * Returns why the comment was minimized. One of `abuse`, `off-topic`,
+   * `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and
+   * formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+   */
   minimizedReason?: Maybe<Scalars['String']['output']>;
   /** A list of teams that this review was made on behalf of. */
   onBehalfOf: TeamConnection;
@@ -18469,7 +19045,11 @@ export type PullRequestReviewComment = Comment & Deletable & Minimizable & Node 
   lastEditedAt?: Maybe<Scalars['DateTime']['output']>;
   /** The end line number on the file to which the comment applies */
   line?: Maybe<Scalars['Int']['output']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+  /**
+   * Returns why the comment was minimized. One of `abuse`, `off-topic`,
+   * `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and
+   * formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+   */
   minimizedReason?: Maybe<Scalars['String']['output']>;
   /** Identifies the original commit associated with the comment. */
   originalCommit?: Maybe<Commit>;
@@ -19096,7 +19676,10 @@ export type Query = {
   organization?: Maybe<Organization>;
   /** The client's rate limit information. */
   rateLimit?: Maybe<RateLimit>;
-  /** Workaround for re-exposing the root query object. (Refer to https://github.com/facebook/relay/issues/112 for more information.) */
+  /**
+   * Workaround for re-exposing the root query object. (Refer to
+   * https://github.com/facebook/relay/issues/112 for more information.)
+   */
   relay: Query;
   /** Lookup a given repository by the owner and repository name. */
   repository?: Maybe<Repository>;
@@ -19613,7 +20196,11 @@ export type RefNameConditionTarget = {
   __typename?: 'RefNameConditionTarget';
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude: Array<Scalars['String']['output']>;
-  /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
+  /**
+   * Array of ref names or patterns to include. One of these patterns must match
+   * for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the
+   * default branch or `~ALL` to include all branches.
+   */
   include: Array<Scalars['String']['output']>;
 };
 
@@ -19621,7 +20208,11 @@ export type RefNameConditionTarget = {
 export type RefNameConditionTargetInput = {
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude: Array<Scalars['String']['input']>;
-  /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
+  /**
+   * Array of ref names or patterns to include. One of these patterns must match
+   * for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the
+   * default branch or `~ALL` to include all branches.
+   */
   include: Array<Scalars['String']['input']>;
 };
 
@@ -20280,6 +20871,25 @@ export type ReopenedEvent = Node & {
   id: Scalars['ID']['output'];
   /** The reason the issue state was changed to open. */
   stateReason?: Maybe<IssueStateReason>;
+};
+
+/** Autogenerated input type of ReorderEnvironment */
+export type ReorderEnvironmentInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the environment to modify */
+  environmentId: Scalars['ID']['input'];
+  /** The desired position of the environment */
+  position: Scalars['Int']['input'];
+};
+
+/** Autogenerated return type of ReorderEnvironment */
+export type ReorderEnvironmentPayload = {
+  __typename?: 'ReorderEnvironmentPayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The environment that was reordered */
+  environment?: Maybe<Environment>;
 };
 
 /** Audit log entry for a repo.access event. */
@@ -21330,7 +21940,10 @@ export enum ReportedContentClassifiers {
 /** A repository contains the content for a project. */
 export type Repository = Node & PackageOwner & ProjectOwner & ProjectV2Recent & RepositoryInfo & Starrable & Subscribable & UniformResourceLocatable & {
   __typename?: 'Repository';
-  /** Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging. */
+  /**
+   * Whether or not a pull request head branch that is behind its base branch can
+   * always be updated even if it is not required to be up to date before merging.
+   */
   allowUpdateBranch: Scalars['Boolean']['output'];
   /** Identifies the date and time when the repository was archived. */
   archivedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -21486,6 +22099,8 @@ export type Repository = Node & PackageOwner & ProjectOwner & ProjectV2Recent & 
   parent?: Maybe<Repository>;
   /** A list of discussions that have been pinned in this repository. */
   pinnedDiscussions: PinnedDiscussionConnection;
+  /** A list of pinned environments for this repository. */
+  pinnedEnvironments?: Maybe<PinnedEnvironmentConnection>;
   /** A list of pinned issues for this repository. */
   pinnedIssues?: Maybe<PinnedIssueConnection>;
   /** Returns information about the availability of certain features and limits based on the repository's billing plan. */
@@ -21549,14 +22164,14 @@ export type Repository = Node & PackageOwner & ProjectOwner & ProjectV2Recent & 
   squashPrTitleUsedAsDefault: Scalars['Boolean']['output'];
   /** The SSH URL to clone this repository */
   sshUrl: Scalars['GitSSHRemote']['output'];
-  /**
-   * Returns a count of how many stargazers there are on this object
-   *
-   */
+  /** Returns a count of how many stargazers there are on this object */
   stargazerCount: Scalars['Int']['output'];
   /** A list of users who have starred this starrable. */
   stargazers: StargazerConnection;
-  /** Returns a list of all submodules in this repository parsed from the .gitmodules file as of the default branch's HEAD commit. */
+  /**
+   * Returns a list of all submodules in this repository parsed from the
+   * .gitmodules file as of the default branch's HEAD commit.
+   */
   submodules: SubmoduleConnection;
   /** Temporary authentication token for cloning this repository. */
   tempCloneToken?: Maybe<Scalars['String']['output']>;
@@ -21728,6 +22343,7 @@ export type RepositoryEnvironmentsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   names?: InputMaybe<Array<Scalars['String']['input']>>;
   orderBy?: InputMaybe<Environments>;
+  pinnedEnvironmentFilter?: InputMaybe<EnvironmentPinnedFilterField>;
 };
 
 
@@ -21859,6 +22475,16 @@ export type RepositoryPinnedDiscussionsArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** A repository contains the content for a project. */
+export type RepositoryPinnedEnvironmentsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<PinnedEnvironmentOrder>;
 };
 
 
@@ -22050,7 +22676,10 @@ export type RepositoryWatchersArgs = {
 export enum RepositoryAffiliation {
   /** Repositories that the user has been added to as a collaborator. */
   Collaborator = 'COLLABORATOR',
-  /** Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on. */
+  /**
+   * Repositories that the user has access to through being a member of an
+   * organization. This includes every repository on every team that the user is on.
+   */
   OrganizationMember = 'ORGANIZATION_MEMBER',
   /** Repositories that are owned by the authenticated user. */
   Owner = 'OWNER'
@@ -22130,7 +22759,10 @@ export type RepositoryConnection = {
   pageInfo: PageInfo;
   /** Identifies the total count of items in the connection. */
   totalCount: Scalars['Int']['output'];
-  /** The total size in kilobytes of all repositories in the connection. Value will never be larger than max 32-bit signed integer. */
+  /**
+   * The total size in kilobytes of all repositories in the connection. Value will
+   * never be larger than max 32-bit signed integer.
+   */
   totalDiskUsage: Scalars['Int']['output'];
 };
 
@@ -22432,7 +23064,10 @@ export type RepositoryMigration = Migration & Node & {
   sourceUrl: Scalars['URI']['output'];
   /** The migration state. */
   state: MigrationState;
-  /** The number of warnings encountered for this migration. To review the warnings, check the [Migration Log](https://docs.github.com/migrations/using-github-enterprise-importer/completing-your-migration-with-github-enterprise-importer/accessing-your-migration-logs-for-github-enterprise-importer). */
+  /**
+   * The number of warnings encountered for this migration. To review the warnings,
+   * check the [Migration Log](https://docs.github.com/migrations/using-github-enterprise-importer/completing-your-migration-with-github-enterprise-importer/accessing-your-migration-logs-for-github-enterprise-importer).
+   */
   warningsCount: Scalars['Int']['output'];
 };
 
@@ -22485,7 +23120,10 @@ export type RepositoryNameConditionTarget = {
   __typename?: 'RepositoryNameConditionTarget';
   /** Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude: Array<Scalars['String']['output']>;
-  /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
+  /**
+   * Array of repository names or patterns to include. One of these patterns must
+   * match for the condition to pass. Also accepts `~ALL` to include all repositories.
+   */
   include: Array<Scalars['String']['output']>;
   /** Target changes that match these patterns will be prevented except by those with bypass permissions. */
   protected: Scalars['Boolean']['output'];
@@ -22495,7 +23133,10 @@ export type RepositoryNameConditionTarget = {
 export type RepositoryNameConditionTargetInput = {
   /** Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude: Array<Scalars['String']['input']>;
-  /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
+  /**
+   * Array of repository names or patterns to include. One of these patterns must
+   * match for the condition to pass. Also accepts `~ALL` to include all repositories.
+   */
   include: Array<Scalars['String']['input']>;
   /** Target changes that match these patterns will be prevented except by those with bypass permissions. */
   protected?: InputMaybe<Scalars['Boolean']['input']>;
@@ -22580,7 +23221,10 @@ export type RepositoryOwnerRepositoryArgs = {
 
 /** The access level to a repository */
 export enum RepositoryPermission {
-  /** Can read, clone, and push to this repository. Can also manage issues, pull requests, and repository settings, including adding collaborators */
+  /**
+   * Can read, clone, and push to this repository. Can also manage issues, pull
+   * requests, and repository settings, including adding collaborators
+   */
   Admin = 'ADMIN',
   /** Can read, clone, and push to this repository. They can also manage issues, pull requests, and some repository settings */
   Maintain = 'MAINTAIN',
@@ -22726,7 +23370,11 @@ export enum RepositoryRuleType {
   Authorization = 'AUTHORIZATION',
   /** Branch name pattern */
   BranchNamePattern = 'BRANCH_NAME_PATTERN',
-  /** Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated. */
+  /**
+   * Choose which tools must provide code scanning results before the reference is
+   * updated. When configured, code scanning must be enabled and have results for
+   * both the commit and the reference being updated.
+   */
   CodeScanning = 'CODE_SCANNING',
   /** Committer email pattern */
   CommitterEmailPattern = 'COMMITTER_EMAIL_PATTERN',
@@ -22738,15 +23386,28 @@ export enum RepositoryRuleType {
   Creation = 'CREATION',
   /** Only allow users with bypass permissions to delete matching refs. */
   Deletion = 'DELETION',
-  /** Prevent commits that include files with specified file extensions from being pushed to the commit graph. NOTE: Thie rule is in beta and subject to change */
+  /**
+   * Prevent commits that include files with specified file extensions from being
+   * pushed to the commit graph. NOTE: Thie rule is in beta and subject to change
+   */
   FileExtensionRestriction = 'FILE_EXTENSION_RESTRICTION',
-  /** Prevent commits that include changes in specified file paths from being pushed to the commit graph. NOTE: Thie rule is in beta and subject to change */
+  /**
+   * Prevent commits that include changes in specified file paths from being pushed
+   * to the commit graph. NOTE: Thie rule is in beta and subject to change
+   */
   FilePathRestriction = 'FILE_PATH_RESTRICTION',
   /** Branch is read-only. Users cannot push to the branch. */
   LockBranch = 'LOCK_BRANCH',
-  /** Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph. NOTE: Thie rule is in beta and subject to change */
+  /**
+   * Prevent commits that include file paths that exceed a specified character
+   * limit from being pushed to the commit graph. NOTE: Thie rule is in beta and
+   * subject to change
+   */
   MaxFilePathLength = 'MAX_FILE_PATH_LENGTH',
-  /** Prevent commits that exceed a specified file size limit from being pushed to the commit. NOTE: Thie rule is in beta and subject to change */
+  /**
+   * Prevent commits that exceed a specified file size limit from being pushed to
+   * the commit. NOTE: Thie rule is in beta and subject to change
+   */
   MaxFileSize = 'MAX_FILE_SIZE',
   /** Max ref updates */
   MaxRefUpdates = 'MAX_REF_UPDATES',
@@ -22762,13 +23423,22 @@ export enum RepositoryRuleType {
   RequiredDeployments = 'REQUIRED_DEPLOYMENTS',
   /** Prevent merge commits from being pushed to matching refs. */
   RequiredLinearHistory = 'REQUIRED_LINEAR_HISTORY',
-  /** When enabled, all conversations on code must be resolved before a pull request can be merged into a branch that matches this rule. */
+  /**
+   * When enabled, all conversations on code must be resolved before a pull request
+   * can be merged into a branch that matches this rule.
+   */
   RequiredReviewThreadResolution = 'REQUIRED_REVIEW_THREAD_RESOLUTION',
   /** Commits pushed to matching refs must have verified signatures. */
   RequiredSignatures = 'REQUIRED_SIGNATURES',
-  /** Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass. */
+  /**
+   * Choose which status checks must pass before the ref is updated. When enabled,
+   * commits must first be pushed to another ref where the checks pass.
+   */
   RequiredStatusChecks = 'REQUIRED_STATUS_CHECKS',
-  /** Require all commits be made to a non-target branch and submitted via a pull request and required workflow checks to pass before they can be merged. */
+  /**
+   * Require all commits be made to a non-target branch and submitted via a pull
+   * request and required workflow checks to pass before they can be merged.
+   */
   RequiredWorkflowStatusChecks = 'REQUIRED_WORKFLOW_STATUS_CHECKS',
   /** Secret scanning */
   SecretScanning = 'SECRET_SCANNING',
@@ -22881,7 +23551,11 @@ export type RepositoryRulesetBypassActorEdge = {
   node?: Maybe<RepositoryRulesetBypassActor>;
 };
 
-/** Specifies the attributes for a new or updated ruleset bypass actor. Only one of `actor_id`, `repository_role_database_id`, `organization_admin`, or `deploy_key` should be specified. */
+/**
+ * Specifies the attributes for a new or updated ruleset bypass actor. Only one of
+ * `actor_id`, `repository_role_database_id`, `organization_admin`, or `deploy_key`
+ * should be specified.
+ */
 export type RepositoryRulesetBypassActorInput = {
   /** For Team and Integration bypasses, the Team or Integration ID */
   actorId?: InputMaybe<Scalars['ID']['input']>;
@@ -23252,26 +23926,44 @@ export type RequiredStatusCheckDescription = {
 
 /** Specifies the attributes for a new or updated required status check. */
 export type RequiredStatusCheckInput = {
-  /** The ID of the App that must set the status in order for it to be accepted. Omit this value to use whichever app has recently been setting this status, or use "any" to allow any app to set the status. */
+  /**
+   * The ID of the App that must set the status in order for it to be accepted.
+   * Omit this value to use whichever app has recently been setting this status, or
+   * use "any" to allow any app to set the status.
+   */
   appId?: InputMaybe<Scalars['ID']['input']>;
   /** Status check context that must pass for commits to be accepted to the matching branch. */
   context: Scalars['String']['input'];
 };
 
-/** Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass. */
+/**
+ * Choose which status checks must pass before the ref is updated. When enabled,
+ * commits must first be pushed to another ref where the checks pass.
+ */
 export type RequiredStatusChecksParameters = {
   __typename?: 'RequiredStatusChecksParameters';
   /** Status checks that are required. */
   requiredStatusChecks: Array<StatusCheckConfiguration>;
-  /** Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. */
+  /**
+   * Whether pull requests targeting a matching branch must be tested with the
+   * latest code. This setting will not take effect unless at least one status
+   * check is enabled.
+   */
   strictRequiredStatusChecksPolicy: Scalars['Boolean']['output'];
 };
 
-/** Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass. */
+/**
+ * Choose which status checks must pass before the ref is updated. When enabled,
+ * commits must first be pushed to another ref where the checks pass.
+ */
 export type RequiredStatusChecksParametersInput = {
   /** Status checks that are required. */
   requiredStatusChecks: Array<StatusCheckConfigurationInput>;
-  /** Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. */
+  /**
+   * Whether pull requests targeting a matching branch must be tested with the
+   * latest code. This setting will not take effect unless at least one status
+   * check is enabled.
+   */
   strictRequiredStatusChecksPolicy: Scalars['Boolean']['input'];
 };
 
@@ -23318,7 +24010,6 @@ export type RestrictedContribution = Contribution & {
    * Whether this contribution is associated with a record you do not have access to. For
    * example, your own 'first issue' contribution may have been made on a repository you can no
    * longer access.
-   *
    */
   isRestricted: Scalars['Boolean']['output'];
   /** When this contribution was made. */
@@ -23327,10 +24018,7 @@ export type RestrictedContribution = Contribution & {
   resourcePath: Scalars['URI']['output'];
   /** The HTTP URL for this contribution. */
   url: Scalars['URI']['output'];
-  /**
-   * The user who made this contribution.
-   *
-   */
+  /** The user who made this contribution. */
   user: User;
 };
 
@@ -23511,7 +24199,6 @@ export type ReviewRequestedEvent = Node & {
 /**
  * A hovercard context with a message describing the current code review state of the pull
  * request.
- *
  */
 export type ReviewStatusHovercardContext = HovercardContext & {
   __typename?: 'ReviewStatusHovercardContext';
@@ -23588,7 +24275,10 @@ export enum RuleEnforcement {
   Active = 'ACTIVE',
   /** Do not evaluate or enforce rules */
   Disabled = 'DISABLED',
-  /** Allow admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise). */
+  /**
+   * Allow admins to test rules before enforcing them. Admins can view insights on
+   * the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
+   */
   Evaluate = 'EVALUATE'
 }
 
@@ -23712,26 +24402,52 @@ export enum SavedReplyOrderField {
 /** The results of a search. */
 export type SearchResultItem = App | Discussion | Issue | MarketplaceListing | Organization | PullRequest | Repository | User;
 
-/** A list of results that matched against a search query. Regardless of the number of matches, a maximum of 1,000 results will be available across all types, potentially split across many pages. */
+/**
+ * A list of results that matched against a search query. Regardless of the number
+ * of matches, a maximum of 1,000 results will be available across all types,
+ * potentially split across many pages.
+ */
 export type SearchResultItemConnection = {
   __typename?: 'SearchResultItemConnection';
-  /** The total number of pieces of code that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types. */
+  /**
+   * The total number of pieces of code that matched the search query. Regardless
+   * of the total number of matches, a maximum of 1,000 results will be available
+   * across all types.
+   */
   codeCount: Scalars['Int']['output'];
-  /** The total number of discussions that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types. */
+  /**
+   * The total number of discussions that matched the search query. Regardless of
+   * the total number of matches, a maximum of 1,000 results will be available
+   * across all types.
+   */
   discussionCount: Scalars['Int']['output'];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<SearchResultItemEdge>>>;
-  /** The total number of issues that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types. */
+  /**
+   * The total number of issues that matched the search query. Regardless of the
+   * total number of matches, a maximum of 1,000 results will be available across all types.
+   */
   issueCount: Scalars['Int']['output'];
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<SearchResultItem>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
-  /** The total number of repositories that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types. */
+  /**
+   * The total number of repositories that matched the search query. Regardless of
+   * the total number of matches, a maximum of 1,000 results will be available
+   * across all types.
+   */
   repositoryCount: Scalars['Int']['output'];
-  /** The total number of users that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types. */
+  /**
+   * The total number of users that matched the search query. Regardless of the
+   * total number of matches, a maximum of 1,000 results will be available across all types.
+   */
   userCount: Scalars['Int']['output'];
-  /** The total number of wiki pages that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types. */
+  /**
+   * The total number of wiki pages that matched the search query. Regardless of
+   * the total number of matches, a maximum of 1,000 results will be available
+   * across all types.
+   */
   wikiCount: Scalars['Int']['output'];
 };
 
@@ -23977,7 +24693,6 @@ export type SecurityVulnerability = {
    * + `< 0.1.11` denotes a version range up to, but excluding, the specified version
    * + `>= 4.3.0, < 4.3.5` denotes a version range with a known minimum and maximum version.
    * + `>= 0.0.1` denotes a version range with a known minimum, but no known maximum
-   *
    */
   vulnerableVersionRange: Scalars['String']['output'];
 };
@@ -24121,7 +24836,10 @@ export type SmimeSignature = GitSignature & {
   signature: Scalars['String']['output'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<User>;
-  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
+  /**
+   * The state of this signature. `VALID` if signature is valid and verified by
+   * GitHub, otherwise represents reason why signature is considered invalid.
+   */
   state: GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean']['output'];
@@ -24189,7 +24907,10 @@ export enum SocialAccountProvider {
 /** Entities that can sponsor others via GitHub Sponsors */
 export type Sponsor = Organization | User;
 
-/** A GitHub account and the total amount in USD they've paid for sponsorships to a particular maintainer. Does not include payments made via Patreon. */
+/**
+ * A GitHub account and the total amount in USD they've paid for sponsorships to a
+ * particular maintainer. Does not include payments made via Patreon.
+ */
 export type SponsorAndLifetimeValue = {
   __typename?: 'SponsorAndLifetimeValue';
   /** The amount in cents. */
@@ -24290,7 +25011,10 @@ export type Sponsorable = {
   isSponsoredBy: Scalars['Boolean']['output'];
   /** True if the viewer is sponsored by this user/organization. */
   isSponsoringViewer: Scalars['Boolean']['output'];
-  /** Calculate how much each sponsor has ever paid total to this maintainer via GitHub Sponsors. Does not include sponsorships paid via Patreon. */
+  /**
+   * Calculate how much each sponsor has ever paid total to this maintainer via
+   * GitHub Sponsors. Does not include sponsorships paid via Patreon.
+   */
   lifetimeReceivedSponsorshipValues: SponsorAndLifetimeValueConnection;
   /** The estimated monthly GitHub Sponsors income for this user/organization in cents (USD). */
   monthlyEstimatedSponsorsIncomeInCents: Scalars['Int']['output'];
@@ -24312,7 +25036,11 @@ export type Sponsorable = {
   sponsorshipsAsMaintainer: SponsorshipConnection;
   /** The sponsorships where this user or organization is the funder. */
   sponsorshipsAsSponsor: SponsorshipConnection;
-  /** The amount in United States cents (e.g., 500 = $5.00 USD) that this entity has spent on GitHub to fund sponsorships. Only returns a value when viewed by the user themselves or by a user who can manage sponsorships for the requested organization. */
+  /**
+   * The amount in United States cents (e.g., 500 = $5.00 USD) that this entity has
+   * spent on GitHub to fund sponsorships. Only returns a value when viewed by the
+   * user themselves or by a user who can manage sponsorships for the requested organization.
+   */
   totalSponsorshipAmountAsSponsorInCents?: Maybe<Scalars['Int']['output']>;
   /** Whether or not the viewer is able to sponsor this user/organization. */
   viewerCanSponsor: Scalars['Boolean']['output'];
@@ -25060,7 +25788,10 @@ export type SponsorsGoal = {
   kind: SponsorsGoalKind;
   /** The percentage representing how complete this goal is, between 0-100. */
   percentComplete: Scalars['Int']['output'];
-  /** What the goal amount is. Represents an amount in USD for monthly sponsorship amount goals. Represents a count of unique sponsors for total sponsors count goals. */
+  /**
+   * What the goal amount is. Represents an amount in USD for monthly sponsorship
+   * amount goals. Represents a count of unique sponsors for total sponsors count goals.
+   */
   targetValue: Scalars['Int']['output'];
   /** A brief summary of the kind and target value of this goal. */
   title: Scalars['String']['output'];
@@ -25079,11 +25810,23 @@ export type SponsorsListing = Node & {
   __typename?: 'SponsorsListing';
   /** The current goal the maintainer is trying to reach with GitHub Sponsors, if any. */
   activeGoal?: Maybe<SponsorsGoal>;
-  /** The Stripe Connect account currently in use for payouts for this Sponsors listing, if any. Will only return a value when queried by the maintainer themselves, or by an admin of the sponsorable organization. */
+  /**
+   * The Stripe Connect account currently in use for payouts for this Sponsors
+   * listing, if any. Will only return a value when queried by the maintainer
+   * themselves, or by an admin of the sponsorable organization.
+   */
   activeStripeConnectAccount?: Maybe<StripeConnectAccount>;
-  /** The name of the country or region with the maintainer's bank account or fiscal host. Will only return a value when queried by the maintainer themselves, or by an admin of the sponsorable organization. */
+  /**
+   * The name of the country or region with the maintainer's bank account or fiscal
+   * host. Will only return a value when queried by the maintainer themselves, or
+   * by an admin of the sponsorable organization.
+   */
   billingCountryOrRegion?: Maybe<Scalars['String']['output']>;
-  /** The email address used by GitHub to contact the sponsorable about their GitHub Sponsors profile. Will only return a value when queried by the maintainer themselves, or by an admin of the sponsorable organization. */
+  /**
+   * The email address used by GitHub to contact the sponsorable about their GitHub
+   * Sponsors profile. Will only return a value when queried by the maintainer
+   * themselves, or by an admin of the sponsorable organization.
+   */
   contactEmailAddress?: Maybe<Scalars['String']['output']>;
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['DateTime']['output'];
@@ -25093,7 +25836,10 @@ export type SponsorsListing = Node & {
   dashboardUrl: Scalars['URI']['output'];
   /** The records featured on the GitHub Sponsors profile. */
   featuredItems: Array<SponsorsListingFeaturedItem>;
-  /** The fiscal host used for payments, if any. Will only return a value when queried by the maintainer themselves, or by an admin of the sponsorable organization. */
+  /**
+   * The fiscal host used for payments, if any. Will only return a value when
+   * queried by the maintainer themselves, or by an admin of the sponsorable organization.
+   */
   fiscalHost?: Maybe<Organization>;
   /** The full description of the listing. */
   fullDescription: Scalars['String']['output'];
@@ -25107,7 +25853,11 @@ export type SponsorsListing = Node & {
   name: Scalars['String']['output'];
   /** A future date on which this listing is eligible to receive a payout. */
   nextPayoutDate?: Maybe<Scalars['Date']['output']>;
-  /** The name of the country or region where the maintainer resides. Will only return a value when queried by the maintainer themselves, or by an admin of the sponsorable organization. */
+  /**
+   * The name of the country or region where the maintainer resides. Will only
+   * return a value when queried by the maintainer themselves, or by an admin of
+   * the sponsorable organization.
+   */
   residenceCountryOrRegion?: Maybe<Scalars['String']['output']>;
   /** The HTTP path for this Sponsors listing. */
   resourcePath: Scalars['URI']['output'];
@@ -25148,13 +25898,20 @@ export type SponsorsListingFeaturedItem = Node & {
   __typename?: 'SponsorsListingFeaturedItem';
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['DateTime']['output'];
-  /** Will either be a description from the sponsorable maintainer about why they featured this item, or the item's description itself, such as a user's bio from their GitHub profile page. */
+  /**
+   * Will either be a description from the sponsorable maintainer about why they
+   * featured this item, or the item's description itself, such as a user's bio
+   * from their GitHub profile page.
+   */
   description?: Maybe<Scalars['String']['output']>;
   /** The record that is featured on the GitHub Sponsors profile. */
   featureable: SponsorsListingFeatureableItem;
   /** The Node ID of the SponsorsListingFeaturedItem object */
   id: Scalars['ID']['output'];
-  /** The position of this featured item on the GitHub Sponsors profile with a lower position indicating higher precedence. Starts at 1. */
+  /**
+   * The position of this featured item on the GitHub Sponsors profile with a lower
+   * position indicating higher precedence. Starts at 1.
+   */
   position: Scalars['Int']['output'];
   /** The GitHub Sponsors profile that features this record. */
   sponsorsListing: SponsorsListing;
@@ -25175,7 +25932,11 @@ export type SponsorsTier = Node & {
   __typename?: 'SponsorsTier';
   /** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
   adminInfo?: Maybe<SponsorsTierAdminInfo>;
-  /** Get a different tier for this tier's maintainer that is at the same frequency as this tier but with an equal or lesser cost. Returns the published tier with the monthly price closest to this tier's without going over. */
+  /**
+   * Get a different tier for this tier's maintainer that is at the same frequency
+   * as this tier but with an equal or lesser cost. Returns the published tier with
+   * the monthly price closest to this tier's without going over.
+   */
   closestLesserValueTier?: Maybe<SponsorsTier>;
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['DateTime']['output'];
@@ -25185,7 +25946,10 @@ export type SponsorsTier = Node & {
   descriptionHTML: Scalars['HTML']['output'];
   /** The Node ID of the SponsorsTier object */
   id: Scalars['ID']['output'];
-  /** Whether this tier was chosen at checkout time by the sponsor rather than defined ahead of time by the maintainer who manages the Sponsors listing. */
+  /**
+   * Whether this tier was chosen at checkout time by the sponsor rather than
+   * defined ahead of time by the maintainer who manages the Sponsors listing.
+   */
   isCustomAmount: Scalars['Boolean']['output'];
   /** Whether this tier is only for use with one-time sponsorships. */
   isOneTime: Scalars['Boolean']['output'];
@@ -25204,11 +25968,27 @@ export type SponsorsTier = Node & {
 /** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
 export type SponsorsTierAdminInfo = {
   __typename?: 'SponsorsTierAdminInfo';
-  /** Indicates whether this tier is still a work in progress by the sponsorable and not yet published to the associated GitHub Sponsors profile. Draft tiers cannot be used for new sponsorships and will not be in use on existing sponsorships. Draft tiers cannot be seen by anyone but the admins of the GitHub Sponsors profile. */
+  /**
+   * Indicates whether this tier is still a work in progress by the sponsorable and
+   * not yet published to the associated GitHub Sponsors profile. Draft tiers
+   * cannot be used for new sponsorships and will not be in use on existing
+   * sponsorships. Draft tiers cannot be seen by anyone but the admins of the
+   * GitHub Sponsors profile.
+   */
   isDraft: Scalars['Boolean']['output'];
-  /** Indicates whether this tier is published to the associated GitHub Sponsors profile. Published tiers are visible to anyone who can see the GitHub Sponsors profile, and are available for use in sponsorships if the GitHub Sponsors profile is publicly visible. */
+  /**
+   * Indicates whether this tier is published to the associated GitHub Sponsors
+   * profile. Published tiers are visible to anyone who can see the GitHub Sponsors
+   * profile, and are available for use in sponsorships if the GitHub Sponsors
+   * profile is publicly visible.
+   */
   isPublished: Scalars['Boolean']['output'];
-  /** Indicates whether this tier has been retired from the associated GitHub Sponsors profile. Retired tiers are no longer shown on the GitHub Sponsors profile and cannot be chosen for new sponsorships. Existing sponsorships may still use retired tiers if the sponsor selected the tier before it was retired. */
+  /**
+   * Indicates whether this tier has been retired from the associated GitHub
+   * Sponsors profile. Retired tiers are no longer shown on the GitHub Sponsors
+   * profile and cannot be chosen for new sponsorships. Existing sponsorships may
+   * still use retired tiers if the sponsor selected the tier before it was retired.
+   */
   isRetired: Scalars['Boolean']['output'];
   /** The sponsorships using this tier. */
   sponsorships: SponsorshipConnection;
@@ -25270,11 +26050,17 @@ export type Sponsorship = Node & {
   createdAt: Scalars['DateTime']['output'];
   /** The Node ID of the Sponsorship object */
   id: Scalars['ID']['output'];
-  /** Whether the sponsorship is active. False implies the sponsor is a past sponsor of the maintainer, while true implies they are a current sponsor. */
+  /**
+   * Whether the sponsorship is active. False implies the sponsor is a past sponsor
+   * of the maintainer, while true implies they are a current sponsor.
+   */
   isActive: Scalars['Boolean']['output'];
   /** Whether this sponsorship represents a one-time payment versus a recurring sponsorship. */
   isOneTimePayment: Scalars['Boolean']['output'];
-  /** Whether the sponsor has chosen to receive sponsorship update emails sent from the sponsorable. Only returns a non-null value when the viewer has permission to know this. */
+  /**
+   * Whether the sponsor has chosen to receive sponsorship update emails sent from
+   * the sponsorable. Only returns a non-null value when the viewer has permission to know this.
+   */
   isSponsorOptedIntoEmail?: Maybe<Scalars['Boolean']['output']>;
   /**
    * The entity that is being sponsored
@@ -25311,9 +26097,15 @@ export type SponsorshipConnection = {
   pageInfo: PageInfo;
   /** Identifies the total count of items in the connection. */
   totalCount: Scalars['Int']['output'];
-  /** The total amount in cents of all recurring sponsorships in the connection whose amount you can view. Does not include one-time sponsorships. */
+  /**
+   * The total amount in cents of all recurring sponsorships in the connection
+   * whose amount you can view. Does not include one-time sponsorships.
+   */
   totalRecurringMonthlyPriceInCents: Scalars['Int']['output'];
-  /** The total amount in USD of all recurring sponsorships in the connection whose amount you can view. Does not include one-time sponsorships. */
+  /**
+   * The total amount in USD of all recurring sponsorships in the connection whose
+   * amount you can view. Does not include one-time sponsorships.
+   */
   totalRecurringMonthlyPriceInDollars: Scalars['Int']['output'];
 };
 
@@ -25446,7 +26238,10 @@ export type SshSignature = GitSignature & {
   signature: Scalars['String']['output'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<User>;
-  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
+  /**
+   * The state of this signature. `VALID` if signature is valid and verified by
+   * GitHub, otherwise represents reason why signature is considered invalid.
+   */
   state: GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean']['output'];
@@ -25493,10 +26288,7 @@ export type StargazerEdge = {
 export type Starrable = {
   /** The Node ID of the Starrable object */
   id: Scalars['ID']['output'];
-  /**
-   * Returns a count of how many stargazers there are on this object
-   *
-   */
+  /** Returns a count of how many stargazers there are on this object */
   stargazerCount: Scalars['Int']['output'];
   /** A list of users who have starred this starrable. */
   stargazers: StargazerConnection;
@@ -25771,9 +26563,18 @@ export type StripeConnectAccount = {
   __typename?: 'StripeConnectAccount';
   /** The account number used to identify this Stripe Connect account. */
   accountId: Scalars['String']['output'];
-  /** The name of the country or region of an external account, such as a bank account, tied to the Stripe Connect account. Will only return a value when queried by the maintainer of the associated GitHub Sponsors profile themselves, or by an admin of the sponsorable organization. */
+  /**
+   * The name of the country or region of an external account, such as a bank
+   * account, tied to the Stripe Connect account. Will only return a value when
+   * queried by the maintainer of the associated GitHub Sponsors profile
+   * themselves, or by an admin of the sponsorable organization.
+   */
   billingCountryOrRegion?: Maybe<Scalars['String']['output']>;
-  /** The name of the country or region of the Stripe Connect account. Will only return a value when queried by the maintainer of the associated GitHub Sponsors profile themselves, or by an admin of the sponsorable organization. */
+  /**
+   * The name of the country or region of the Stripe Connect account. Will only
+   * return a value when queried by the maintainer of the associated GitHub
+   * Sponsors profile themselves, or by an admin of the sponsorable organization.
+   */
   countryOrRegion?: Maybe<Scalars['String']['output']>;
   /** Whether this Stripe Connect account is currently in use for the associated GitHub Sponsors profile. */
   isActive: Scalars['Boolean']['output'];
@@ -27004,15 +27805,11 @@ export type Topic = Node & Starrable & {
   /**
    * A list of related topics, including aliases of this topic, sorted with the most relevant
    * first. Returns up to 10 Topics.
-   *
    */
   relatedTopics: Array<Topic>;
   /** A list of repositories. */
   repositories: RepositoryConnection;
-  /**
-   * Returns a count of how many stargazers there are on this object
-   *
-   */
+  /** Returns a count of how many stargazers there are on this object */
   stargazerCount: Scalars['Int']['output'];
   /** A list of users who have starred this starrable. */
   stargazers: StargazerConnection;
@@ -27313,7 +28110,10 @@ export type UnknownSignature = GitSignature & {
   signature: Scalars['String']['output'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<User>;
-  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
+  /**
+   * The state of this signature. `VALID` if signature is valid and verified by
+   * GitHub, otherwise represents reason why signature is considered invalid.
+   */
   state: GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean']['output'];
@@ -27642,7 +28442,10 @@ export type UpdateBranchProtectionRuleInput = {
   dismissesStaleReviews?: InputMaybe<Scalars['Boolean']['input']>;
   /** Can admins override branch protection. */
   isAdminEnforced?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
+  /**
+   * Whether users can pull changes from upstream when the branch is locked. Set to
+   * `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+   */
   lockAllowsFetchAndMerge?: InputMaybe<Scalars['Boolean']['input']>;
   /** Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. */
   lockBranch?: InputMaybe<Scalars['Boolean']['input']>;
@@ -27891,7 +28694,10 @@ export type UpdateEnterpriseMembersCanCreateRepositoriesSettingInput = {
   membersCanCreatePublicRepositories?: InputMaybe<Scalars['Boolean']['input']>;
   /** When false, allow member organizations to set their own repository creation member privileges. */
   membersCanCreateRepositoriesPolicyEnabled?: InputMaybe<Scalars['Boolean']['input']>;
-  /** Value for the members can create repositories setting on the enterprise. This or the granular public/private/internal allowed fields (but not both) must be provided. */
+  /**
+   * Value for the members can create repositories setting on the enterprise. This
+   * or the granular public/private/internal allowed fields (but not both) must be provided.
+   */
   settingValue?: InputMaybe<EnterpriseMembersCanCreateRepositoriesSettingValue>;
 };
 
@@ -28399,9 +29205,15 @@ export type UpdateParametersInput = {
 export type UpdatePatreonSponsorabilityInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Whether Patreon tiers should be shown on the GitHub Sponsors profile page, allowing potential sponsors to make their payment through Patreon instead of GitHub. */
+  /**
+   * Whether Patreon tiers should be shown on the GitHub Sponsors profile page,
+   * allowing potential sponsors to make their payment through Patreon instead of GitHub.
+   */
   enablePatreonSponsorships: Scalars['Boolean']['input'];
-  /** The username of the organization with the GitHub Sponsors profile, if any. Defaults to the GitHub Sponsors profile for the authenticated user if omitted. */
+  /**
+   * The username of the organization with the GitHub Sponsors profile, if any.
+   * Defaults to the GitHub Sponsors profile for the authenticated user if omitted.
+   */
   sponsorableLogin?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -28638,7 +29450,6 @@ export type UpdatePullRequestInput = {
   /**
    * The name of the branch you want your changes pulled into. This should be an existing branch
    * on the current repository.
-   *
    */
   baseRefName?: InputMaybe<Scalars['String']['input']>;
   /** The contents of the pull request. */
@@ -28770,7 +29581,10 @@ export type UpdateRepositoryInput = {
   name?: InputMaybe<Scalars['String']['input']>;
   /** The ID of the repository to update. */
   repositoryId: Scalars['ID']['input'];
-  /** Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure. */
+  /**
+   * Whether this repository should be marked as a template such that anyone who
+   * can access it can create new repositories with the same files and directory structure.
+   */
   template?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -28837,13 +29651,22 @@ export type UpdateRepositoryWebCommitSignoffSettingPayload = {
 export type UpdateSponsorshipPreferencesInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Specify whether others should be able to see that the sponsor is sponsoring the sponsorable. Public visibility still does not reveal which tier is used. */
+  /**
+   * Specify whether others should be able to see that the sponsor is sponsoring
+   * the sponsorable. Public visibility still does not reveal which tier is used.
+   */
   privacyLevel?: InputMaybe<SponsorshipPrivacy>;
   /** Whether the sponsor should receive email updates from the sponsorable. */
   receiveEmails?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given. */
+  /**
+   * The ID of the user or organization who is acting as the sponsor, paying for
+   * the sponsorship. Required if sponsorLogin is not given.
+   */
   sponsorId?: InputMaybe<Scalars['ID']['input']>;
-  /** The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given. */
+  /**
+   * The username of the user or organization who is acting as the sponsor, paying
+   * for the sponsorship. Required if sponsorId is not given.
+   */
   sponsorLogin?: InputMaybe<Scalars['String']['input']>;
   /** The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given. */
   sponsorableId?: InputMaybe<Scalars['ID']['input']>;
@@ -28904,7 +29727,10 @@ export type UpdateTeamDiscussionCommentPayload = {
 export type UpdateTeamDiscussionInput = {
   /** The updated text of the discussion. */
   body?: InputMaybe<Scalars['String']['input']>;
-  /** The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server. */
+  /**
+   * The current version of the body content. If provided, this update operation
+   * will be rejected if the given version does not match the latest version on the server.
+   */
   bodyVersion?: InputMaybe<Scalars['String']['input']>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -29071,6 +29897,8 @@ export type User = Actor & Node & PackageOwner & ProfileOwner & ProjectOwner & P
   companyHTML: Scalars['HTML']['output'];
   /** The collection of contributions this user has made to different repositories. */
   contributionsCollection: ContributionsCollection;
+  /** The user's Copilot endpoint information */
+  copilotEndpoints?: Maybe<CopilotEndpoints>;
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['DateTime']['output'];
   /** Identifies the primary key from the database. */
@@ -29125,9 +29953,15 @@ export type User = Actor & Node & PackageOwner & ProfileOwner & ProjectOwner & P
   issueComments: IssueCommentConnection;
   /** A list of issues associated with this user. */
   issues: IssueConnection;
-  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
+  /**
+   * Showcases a selection of repositories and gists that the profile owner has
+   * either curated or that have been selected automatically based on popularity.
+   */
   itemShowcase: ProfileItemShowcase;
-  /** Calculate how much each sponsor has ever paid total to this maintainer via GitHub Sponsors. Does not include sponsorships paid via Patreon. */
+  /**
+   * Calculate how much each sponsor has ever paid total to this maintainer via
+   * GitHub Sponsors. Does not include sponsorships paid via Patreon.
+   */
   lifetimeReceivedSponsorshipValues: SponsorAndLifetimeValueConnection;
   /** A user-curated list of repositories */
   lists: UserListConnection;
@@ -29213,12 +30047,13 @@ export type User = Actor & Node & PackageOwner & ProfileOwner & ProjectOwner & P
   status?: Maybe<UserStatus>;
   /** Suggested names for user lists */
   suggestedListNames: Array<UserListSuggestion>;
-  /**
-   * Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created
-   *
-   */
+  /** Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created */
   topRepositories: RepositoryConnection;
-  /** The amount in United States cents (e.g., 500 = $5.00 USD) that this entity has spent on GitHub to fund sponsorships. Only returns a value when viewed by the user themselves or by a user who can manage sponsorships for the requested organization. */
+  /**
+   * The amount in United States cents (e.g., 500 = $5.00 USD) that this entity has
+   * spent on GitHub to fund sponsorships. Only returns a value when viewed by the
+   * user themselves or by a user who can manage sponsorships for the requested organization.
+   */
   totalSponsorshipAmountAsSponsorInCents?: Maybe<Scalars['Int']['output']>;
   /** The user's Twitter username. */
   twitterUsername?: Maybe<Scalars['String']['output']>;
