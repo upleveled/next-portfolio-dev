@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 3040",
-    "gen": "graphql-codegen --config codegen.yml",
+    "gen": "NODE_OPTIONS=\"--loader ts-node/esm\" graphql-codegen-esm --verbose --config codegen.yml",
     "lint": "next lint",
     "prepare": "pnpm gen",
     "start": "next start"
@@ -22,6 +22,7 @@
     "react-google-recaptcha": "^3.0.0",
     "server-only": "^0.0.1",
     "sharp": "^0.33.0",
+    "ts-node": "^10.9.2",
     "yup": "^1.2.0"
   },
   "devDependencies": {
@@ -38,7 +39,7 @@
     "@types/sharp": "0.32.0",
     "autoprefixer": "^10.4.14",
     "eslint": "8.56.0",
-    "eslint-config-upleveled": "8.1.10",
+    "eslint-config-upleveled": "8.2.0",
     "postcss": "8.4.38",
     "prettier": "^3.2.5",
     "stylelint": "16.5.0",
