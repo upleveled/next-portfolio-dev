@@ -1,4 +1,4 @@
-const path = require('node:path');
+import path from 'node:path';
 
 const buildEslintCommand = (/** @type {string[]} */ filenames) =>
   `next lint --fix --file ${filenames
