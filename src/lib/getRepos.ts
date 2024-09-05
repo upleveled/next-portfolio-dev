@@ -1,5 +1,5 @@
 import 'server-only';
-import { RepositoryEdge } from '../generated/graphql';
+import { RepositoryConnection, RepositoryEdge } from '../generated/graphql';
 
 const getRepos = async (): Promise<RepositoryEdge[]> => {
   const res = await fetch('https://api.github.com/graphql', {
@@ -42,9 +42,23 @@ const getRepos = async (): Promise<RepositoryEdge[]> => {
     throw new Error('Failed to fetch data');
   }
 
-  const data = await res.json();
+  const data: {
+    data: {
+      viewer: {
+        repositories: RepositoryConnection;
+      };
+    };
+  } = await res.json();
 
-  return data.data.viewer.repositories.edges;
+  if (!data.data.viewer.repositories.edges) {
+    throw new Error('Failed to fetch data');
+  }
+
+  if (data.data.viewer.repositories.edges.some((edge) => edge === null)) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return data.data.viewer.repositories.edges as RepositoryEdge[];
 };
 
 export default getRepos;
