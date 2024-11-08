@@ -1,6 +1,6 @@
 import ForkIcon from '../../../components/ui/Icons/Fork';
 import StarIcon from '../../../components/ui/Icons/Star';
-import { Repository } from '../../../generated/graphql';
+import type { Repository } from '../../../generated/graphql';
 
 const RepositoryComponent = ({
   name,
