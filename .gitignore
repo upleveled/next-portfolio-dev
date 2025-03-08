@@ -42,5 +42,8 @@ yarn-error.log*
 
 src/generated/graphql.ts
 
-# pnpm v8-compile-cache dependency https://github.com/upleveled/next-portfolio-dev/pull/98#issuecomment-1817581049
+# pnpm v8-compile-cache dependency
+# - https://github.com/upleveled/next-portfolio-dev/pull/98#issuecomment-1817581049
+# - https://github.com/pnpm/pnpm/issues/7330#issuecomment-2708137623
 v8-compile-cache*/
+node-compile-cache/
