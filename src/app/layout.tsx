@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     shortcut: '/assets/favicon/favicon.ico',
     apple: '/assets/favicon/apple-touch-icon.png',
   },
-  themeColor: '#6b63ff',
   twitter: {
     card: 'summary_large_image',
     creator: twitter,
@@ -52,7 +51,11 @@ type RootLayoutProps = {
 };
 
 const RootLayout = ({ children }: RootLayoutProps) => (
-  <html lang="en" className={`${roboto.variable} font-sans scroll-smooth`}>
+  <html
+    lang="en"
+    className={`${roboto.variable} font-sans scroll-smooth`}
+    suppressHydrationWarning
+  >
     <body>{children}</body>
   </html>
 );

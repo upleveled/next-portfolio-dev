@@ -22,7 +22,7 @@ const Header = () => {
       />
       <Navbar />
       <Hamburger sidebar={sidebar} toggle={setSidebar} />
-      <Sidebar sidebar={sidebar} toggle={() => setSidebar(!sidebar)} />
+      <Sidebar sidebar={sidebar} />
     </div>
   );
 };
