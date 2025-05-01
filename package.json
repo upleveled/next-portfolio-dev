@@ -12,7 +12,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@formspree/react": "^2.5.0",
+    "@formspree/react": "^3.0.0",
     "clsx": "^2.0.0",
     "formik": "^2.4.2",
     "next": "^15.0.0",
