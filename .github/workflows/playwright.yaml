@@ -10,9 +10,7 @@ jobs:
       NEXT_PUBLIC_FORM: ${{ secrets.NEXT_PUBLIC_FORM }}
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 'latest'
+      - uses: pnpm/action-setup@v4
 
       # Use the official setup-node action (sets up Node.js):
       # https://github.com/actions/setup-node
