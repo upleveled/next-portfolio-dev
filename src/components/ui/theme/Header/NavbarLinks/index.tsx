@@ -16,7 +16,6 @@ const NavbarLinks = ({ desktop }: NavbarLinksProps) => {
   const pathname = usePathname();
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- TODO: Re-enable when eslint-config-upleveled releases fixed version https://github.com/upleveled/eslint-config-upleveled/pull/554
     setHasMounted(!!ref.current);
   }, []);
 
