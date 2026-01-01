@@ -6,7 +6,7 @@ jobs:
     name: Update graphql-codegen types
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           # Disable configuring $GITHUB_TOKEN in local git config
           persist-credentials: false
