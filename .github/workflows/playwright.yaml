@@ -9,7 +9,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
       NEXT_PUBLIC_FORM: ${{ secrets.NEXT_PUBLIC_FORM }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
 
       # Use the official setup-node action (sets up Node.js):
@@ -32,7 +32,7 @@ jobs:
       - name: Get installed Playwright version for cache key
         run: echo "PLAYWRIGHT_VERSION=$(yq eval '.version' --output-format=yaml ./node_modules/@playwright/test/package.json)" >> $GITHUB_ENV
       - name: Cache Playwright browser binaries
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: playwright-browser-cache
         with:
           path: |
@@ -44,7 +44,7 @@ jobs:
 
       - name: Run tests
         run: pnpm playwright test
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: playwright-screenshots-videos
