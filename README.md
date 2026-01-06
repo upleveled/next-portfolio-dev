@@ -37,8 +37,8 @@ Project on [Behance](https://www.behance.net/gallery/74172961/Free-Gatsby-portfo
 
 ### Online
 
-1. Grab a Google recaptcha key from [Google Recaptcha](https://www.google.com/recaptcha/admin)
-2. Grab your Github token from [GitHub](https://github.com/settings/tokens/new?scopes=public_repo&description=portfolio-dev)
+1. Grab a Google reCAPTCHA key from [Google reCAPTCHA](https://www.google.com/recaptcha/admin)
+2. Grab your GitHub token from [GitHub](https://github.com/settings/tokens/new?scopes=public_repo&description=portfolio-dev)
 3. Add secrets to GitHub or Netlify
 
 ### Locally
@@ -46,14 +46,14 @@ Project on [Behance](https://www.behance.net/gallery/74172961/Free-Gatsby-portfo
 1. Create an account at [Formspree](https://formspree.io/?utm_source=smakosh)
 2. Grab your GitHub token from [GitHub](https://github.com/settings/tokens/new?scopes=public_repo&description=portfolio-dev)
 3. Run `cp .env.development.local.template .env.development.local`
-4. Add your env variables to .env.development.local.
+4. Add your env variables to `.env.development.local.`
 5. Run `pnpm i && pnpm dev`
 
 ## Built with
 
 - Adobe XD
-- Next js
-- Tailwindcss
+- Next.js
+- Tailwind CSS
 - TypeScript
 - Formspree
 - VSCode
