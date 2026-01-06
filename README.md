@@ -17,16 +17,16 @@
 ## Features
 
 - TypeScript
-- Eslint/Prettier configured
+- ESLint/Prettier configured
 - Scores 100% on a11y / Performance / PWA / SEO
 - Easy to customize
 - Nice project structure
 - Amazing illustrations by [Undraw.co](https://undraw.co)
 - Tablet & mobile friendly
 - Continuous deployment with [Vercel](https://vercel.com/?utm_source=smakosh)
-- A contact form protected by Google Recaptcha powered by Formspree
+- A contact form protected by Google reCAPTCHA powered by Formspree
 - Can be deployed with one click
-- Fetches your Github pinned projects with most stars (You could customize this if you wish) using ISR
+- Fetches your GitHub pinned projects with most stars (You could customize this if you wish) using ISR
 - One click deployment to Vercel
 
 ## Design
@@ -87,4 +87,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Support
 
-If you love this Next js template and want to support me, you can do so through my GitHub profile.
+If you love this Next.js template and want to support me, you can do so through my GitHub profile.
