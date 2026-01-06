@@ -9,6 +9,7 @@ const { url, defaultDescription, defaultTitle, twitter } = config;
 export const metadata: Metadata = {
   title: defaultTitle,
   description: defaultDescription,
+  metadataBase: new URL(url),
   openGraph: {
     title: defaultTitle,
     description: defaultDescription,
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     siteName: defaultTitle,
     images: [
       {
-        url: `${url}/assets/thumbnail/thumbnail.png`,
+        url: '/assets/thumbnail/thumbnail.png',
         width: 800,
         height: 600,
       },
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
     title: defaultTitle,
     description: defaultDescription,
     site: url,
+    images: '/assets/thumbnail/thumbnail.png',
   },
   manifest: '/assets/favicon/site.webmanifest',
 };
