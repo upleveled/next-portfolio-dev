@@ -2,7 +2,6 @@
 
 import clsx from 'clsx';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import ToggleTheme from '../ToggleTheme';
 
@@ -13,7 +12,6 @@ type NavbarLinksProps = {
 const NavbarLinks = ({ desktop }: NavbarLinksProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [hasMounted, setHasMounted] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     setHasMounted(!!ref.current);
@@ -28,21 +26,21 @@ const NavbarLinks = ({ desktop }: NavbarLinksProps) => {
       ref={ref}
     >
       <Link
-        href={`${pathname}#about`}
+        href="#about"
         className="text-black mb-4 lg:mb-0 mr-0 lg:mr-4 dark:text-white lg:dark:text-black min-[2170px]:dark:text-white"
         scroll
       >
         About
       </Link>
       <Link
-        href={`${pathname}#projects`}
+        href="#projects"
         className="text-black mb-4 lg:mb-0 mr-0 lg:mr-4 dark:text-white lg:dark:text-black min-[2170px]:dark:text-white"
         scroll
       >
         Projects
       </Link>
       <Link
-        href={`${pathname}#contact`}
+        href="#contact"
         className="text-black mb-4 lg:mb-0 mr-0 lg:mr-4 dark:text-white lg:dark:text-black min-[2170px]:dark:text-white"
         scroll
       >

@@ -2,6 +2,9 @@ overwrite: true
 schema: 'src/generated/github-schema-loader.js'
 generates:
   src/generated/graphql.ts:
+    config:
+      scalars:
+        URI: string
     plugins:
       - 'typescript'
       - 'typescript-operations'
